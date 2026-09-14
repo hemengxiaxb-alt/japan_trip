@@ -1,0 +1,13 @@
+name = "japan-trip-guide"
+main = "src/worker.js"
+compatibility_date = "2026-09-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+# 下面这个 id 需要你在 Cloudflare 后台创建 KV 命名空间后替换成真实的 ID
+# 具体步骤见 README.md
+[[kv_namespaces]]
+binding = "TODO_KV"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
