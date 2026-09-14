@@ -151,6 +151,15 @@
   .todo-done-btn:active{background:var(--moss);color:#fff;border-color:var(--moss);}
   .todo-empty,.todo-offline{padding:14px 0;font-size:13px;color:var(--ink-soft);}
 
+  /* ---------- coupon reminders ---------- */
+  .coupon-list{display:grid;gap:12px;}
+  .coupon-item{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--vermillion);border-radius:4px;padding:14px;}
+  .coupon-item h3{font-size:14px;margin:0 0 6px;}
+  .coupon-item p{font-size:13px;margin:5px 0;}
+  .coupon-item .coupon-note{font-size:12px;color:var(--ink-soft);}
+  .coupon-muted{border-left-color:var(--ink-soft);opacity:.86;}
+  .coupon-howto{margin-top:14px;padding:14px;background:var(--paper-alt);border-radius:4px;font-size:13px;}
+  .coupon-howto ul{margin:6px 0 0;padding-left:18px;color:var(--ink-soft);}
   /* ---------- tips ---------- */
   .tip-block{padding:14px 0;border-top:1px solid var(--line);}
   .tip-block:first-child{border-top:none;}
@@ -254,6 +263,51 @@
   </div>
 
   <hr class="rule">
+
+
+  <hr class="rule">
+
+  <!-- ============ 优惠券提醒 ============ -->
+  <div class="section" id="coupon-section">
+    <h2>沿途可用优惠券</h2>
+    <p class="desc">根据你收藏的小红书笔记整理；结账前先打开对应优惠券，并以门店当日规则为准。</p>
+    <div class="coupon-list">
+      <div class="coupon-item">
+        <h3>10/15 大阪购物日｜大丸心斋桥・梅田</h3>
+        <p><strong>大丸 / 松坂屋：95折（5% off）</strong>，含税满 ¥3,000 可用；另有退税满 ¥10,000 可领 ¥2,000 食品券。</p>
+        <p class="coupon-note">退税与食品券需在办完退税前先出示；食品、奢侈品牌、特价品等可能除外。有效至 2027/8/31，需护照。</p>
+      </div>
+      <div class="coupon-item">
+        <h3>10/15 大阪购物日｜Bic Camera / KOJIMA</h3>
+        <p><strong>免税 10% 之外再减：电器 7%，药妆/食品/日用品 5%，日本酒 3%</strong>；结账时出示海报中的两组条码并扫码。</p>
+        <p class="coupon-note">有效至 2026/12/31；Apple、游戏机、部分相机/手机等商品可能除外，购买戒指或其他指定品牌前先问店员。</p>
+      </div>
+      <div class="coupon-item">
+        <h3>10/15 大阪购物日｜EDION</h3>
+        <p><strong>免税 10% 之外再减：电器/相机/手表等 7%，药妆/食品/日用品 5%</strong>。</p>
+        <p class="coupon-note">有效至 2027/12/31；同店同日税前满 ¥5,000、停留日本未满 6 个月并出示护照，部分品牌/商品除外。</p>
+      </div>
+      <div class="coupon-item">
+        <h3>10/17 奈良一日游｜近铁百货奈良店</h3>
+        <p><strong>游客 95折（5% off）</strong>，税前满 ¥2,000；优惠码：<strong>Z114-14</strong>。</p>
+        <p class="coupon-note">有效至 2027/2/28；食品、特价品、礼品卡、餐饮及部分专柜除外，不能与其他优惠叠加。</p>
+      </div>
+      <div class="coupon-item">
+        <h3>10/20 羽田返程前｜ANA 成田机场免税店</h3>
+        <p>收藏笔记中的 ANA 免税券可减 5%，代码 <strong>6600-8503</strong>，但仅限成田机场 T1 且有效至 2027/3/31。</p>
+        <p class="coupon-note">本次从羽田返程，不适用；若临时改为成田出发再使用。</p>
+        <p class="coupon-note">各券优惠期与适用商品可能调整，出发前建议重新核对官方页面。</p>
+      </div>
+    </div>
+    <div class="coupon-howto">
+      <strong>使用前提醒</strong>
+      <ul>
+        <li>提前把对应优惠券海报保存到手机，结账前向收银员说“coupon（クーポン）”并出示扫码。</li>
+        <li>Don Quijote 需要用日本官网打开优惠券并生成动态条码，再配合护照；5%/7%按未税金额门槛选择，且一张券通常只能使用一次。</li>
+        <li>优惠券通常不影响退税，但必须先问清“优惠后金额是否仍满足退税门槛”。</li>
+      </ul>
+    </div>
+  </div>
 
   <!-- ============ 5. 待办清单 ============ -->
   <div class="section">
