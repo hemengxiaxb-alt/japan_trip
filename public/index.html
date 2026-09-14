@@ -375,7 +375,7 @@
     {iso:"2026-10-14T20:35:00+09:00", title:"抵达关西机场", sub:"落地大阪，前往本町酒店", tz:"日本时间"},
     {iso:"2026-10-15T09:30:00+09:00", title:"大阪购物日开始", sub:"アイプリモ梅田 HERBIS ENT 取戒指", tz:"日本时间"},
     {iso:"2026-10-16T08:30:00+09:00", title:"环球影城开园", sub:"USJ 全天，傍晚去空庭温泉", tz:"日本时间"},
-    {iso:"2026-10-17T08:30:00+09:00", title:"奈良一日游出发", sub:"近铁难波站启用关西周游券", tz:"日本时间"},
+    {iso:"2026-10-17T08:30:00+09:00", title:"奈良一日游出发", sub:"近铁难波站启用奈良一日券或IC卡", tz:"日本时间"},
     {iso:"2026-10-18T11:00:00+09:00", title:"大阪酒店退房", sub:"带行李前往京都中转", tz:"日本时间"},
     {iso:"2026-10-18T17:00:00+09:00", title:"新干线出发", sub:"京都开往东京，约2小时20分", tz:"日本时间"},
     {iso:"2026-10-19T09:00:00+09:00", title:"浅草寺", sub:"仲见世通り，之后前往日本桥・银座", tz:"日本时间"},
@@ -450,8 +450,9 @@
       meta:['成人票，需兑换实体票', '建议 10/19 一早启用，覆盖至 10/21 凌晨']
     },
     {
-      icon:'🎫', title:'关西周游券（待购买）',
-      meta:['建议 3 日非连续版', '用于 10/15 大阪地铁 · 10/17 奈良近铁 · 10/18 京都巴士/地铁']
+      icon:'🎫', title:'奈良一日券规划（待决定）',
+      meta:['推荐先比较：Osaka Metro版「奈良・斑鸠1day」¥2,200/人，含大阪Metro（梦洲除外）+大阪难波↔近铁奈良+奈良交通指定区间；适合酒店往返难波并在奈良坐公交。','若当天以步行为主：IC卡购买近铁往返（约¥1,360/人），需要 2 次以上公交再加奈良公园・西之京世界遗产 1-Day Pass ¥600；通常更灵活。','原“关西周游券3日非连续版”不适用于本次 10/17；官方 LITE 版本期有效期最晚至 2026/10/02。'],
+      url:'https://www.kintetsu.co.jp/senden/Railway/Ticket/ikaruga/', linkLabel:'官方票券说明 →'
     }
   ];
   var confWrap = document.getElementById('confirmedList');
@@ -460,6 +461,7 @@
     div.className = 'conf-item';
     var metaHtml = c.meta.map(function(m){ return '<div>'+esc(m)+'</div>'; }).join('');
     if(c.loc){ metaHtml += '<div><a class="loc" target="_blank" rel="noopener" href="'+mapsUrl(c.loc)+'">在地图中打开 →</a></div>'; }
+    if(c.url){ metaHtml += '<div><a class="loc" target="_blank" rel="noopener" href="'+esc(c.url)+'">'+esc(c.linkLabel || '官方信息 →')+'</a></div>'; }
     div.innerHTML = '<div class="conf-icon">'+c.icon+'</div><div class="conf-body"><b>'+esc(c.title)+'</b><div class="meta">'+metaHtml+'</div></div>';
     confWrap.appendChild(div);
   });
@@ -487,14 +489,16 @@
     ]},
     {date:'10/16（五）', color:'#BD4430', summary:'环球影城 USJ + 空庭温泉', stops:[
       {time:'08:30', name:'环球影城 USJ', note:'万圣节活动期间，Express Pass建议提前官网订', loc:'Universal Studios Japan'},
-      {time:'20:00', name:'空庭温泉 OSAKA BAY TOWER', note:'贷切露天风吕，需提前预约', loc:'空庭温泉 OSAKA BAY TOWER 弁天町'}
+      {time:'20:00', name:'空庭温泉 OSAKA BAY TOWER', note:'贷切露天风吕；最晚预约：当天 19:00 前电话询问（仅限有空房，11:30–20:00 时段），但建议最迟提前 1–2 周预约；官方建议预约前约 1 小时到馆', loc:'空庭温泉 OSAKA BAY TOWER 弁天町', url:'https://solaniwa.com/explore/private_bath/', linkLabel:'官方温泉预约页 →'}
     ]},
     {date:'10/17（六）', color:'#5C7A52', summary:'奈良一日游', stops:[
-      {time:'08:30', name:'近铁大阪难波站', note:'启用关西周游券', loc:'近鉄大阪難波駅', exchange:true},
-      {time:'09:30', name:'东大寺', loc:'東大寺 奈良'},
-      {time:'11:30', name:'奈良公园', note:'看鹿', loc:'奈良公園'},
-      {time:'13:00', name:'春日大社', loc:'春日大社'},
-      {time:'15:00', name:'返回大阪', loc:'近鉄奈良駅'},
+      {time:'08:30', name:'酒店→大阪难波站', note:'票券建议：不必购买关西铁路通票；若要乘大阪Metro到难波且奈良坐 2 次以上公交，买「奈良・斑鸠1day（Osaka Metro版）」¥2,200/人；否则 IC 卡 + 近铁普通往返更省', loc:'大阪難波駅', url:'https://www.kintetsu.co.jp/senden/Railway/Ticket/ikaruga/', linkLabel:'官方票券说明 →'},
+      {time:'09:00', name:'近铁大阪难波→近铁奈良', note:'快速急行约 40 分钟；普通运费往返约 ¥1,360，特急需另付特急券', loc:'近鉄奈良駅'},
+      {time:'10:00', name:'东大寺', note:'从近铁奈良站步行约 20 分，建议步行串联', loc:'東大寺 奈良'},
+      {time:'11:30', name:'奈良公园', note:'看鹿；与东大寺区域步行衔接', loc:'奈良公園'},
+      {time:'13:00', name:'春日大社', note:'建议步行；体力不足时再使用奈良交通巴士', loc:'春日大社'},
+      {time:'14:30', name:'奈良町・近铁奈良站', note:'休息、买伴手礼，准备返程', loc:'ならまち 奈良'},
+      {time:'15:15', name:'返回大阪', note:'近铁快速急行返回大阪难波', loc:'近鉄奈良駅'},
       {time:'15:30', name:'迟午餐｜Spice Kingdom 难波CITY店', note:'北印度咖喱、比尔亚尼、烤饼；大阪市中央区难波5-1-60 なんばCITY本馆1F · 11:00–22:00', loc:'Spice Kingdom なんばCITY店 大阪市中央区難波5-1-60', image:'codex-clipboard-cebcb164-a48d-477e-8514-5dfbce46cc8e.png'},
       {time:'17:30', name:'晚餐选项 A｜烧鸟店 Enya 难波店', note:'与 Yumemaru 二选一；大阪市中央区难波4-6-4 · 17:00–翌0:30', loc:'炭火焼とり えんや 難波店 大阪市中央区難波4-6-4', image:'codex-clipboard-bcd4d4dc-7a95-40fe-86da-ead61d91bccd.png'},
       {time:'17:30', name:'晚餐选项 B｜YUMEMARU（ユメマル）', note:'与 Enya 二选一；寿喜烧/涮涮锅；大阪市中央区日本桥1-1-14 2F · 17:00–21:00，建议预约', loc:'YUMEMARU 大阪市中央区日本橋1-1-14 2F', image:'codex-clipboard-a5bcc31b-5348-46c2-9ad7-6d1cbd21907a.png'}
@@ -506,7 +510,8 @@
       {time:'12:15', name:'伏见稻荷大社', note:'千本鸟居，JR奈良线2站（不在关西周游券范围内，单独购票）', loc:'伏見稲荷大社'},
       {time:'14:00', name:'四条・新京极', note:'SOU・SOU购物 + 河原町逛街', loc:'新京極通 京都'},
       {time:'16:00', name:'京都站取行李 + 晚餐', loc:'京都駅'},
-      {time:'17:00', name:'新干线 京都→东京', note:'约2h20m，需另购车票'}
+      {time:'17:00', name:'新干线 京都→东京', note:'约2h20m，需另购车票'},
+      {time:'19:45', name:'入住东京酒店｜VIA INN 饭田桥后乐园', note:'预计 19:30–20:00 抵达；已确认入住 10/18 15:00 后、退房 10/20 10:00 前；到店后办理入住', loc:'VIA INN IIDABASHI KORAKUEN Tokyo'}
     ]},
     {date:'10/19（一）', color:'#24405F', summary:'浅草 → 日本桥 → 银座', stops:[
       {time:'08:30', name:'兑换东京地铁48小时券', note:'在地铁站窗口兑换实体票', exchange:true},
@@ -540,8 +545,9 @@
       var nameHtml = s.loc ? '<a class="loc" target="_blank" rel="noopener" href="'+mapsUrl(s.loc)+'">'+esc(s.name)+'</a>' : esc(s.name);
       var badge = s.exchange ? '<span class="badge">换票</span>' : '';
       var note = s.note ? '<span class="note">'+esc(s.note)+'</span>' : '';
+      var linkHtml = s.url ? '<a class="loc" target="_blank" rel="noopener" href="'+esc(s.url)+'">'+esc(s.linkLabel || '官方预约/票券信息 →')+'</a>' : '';
       var photo = s.image ? '<img class="stop-image" src="'+esc(s.image)+'" alt="'+esc(s.name)+'" loading="lazy">' : '';
-      return '<div class="stop"><div class="time">'+esc(s.time)+'</div><div class="content">'+nameHtml+badge+note+photo+'</div></div>';
+      return '<div class="stop"><div class="time">'+esc(s.time)+'</div><div class="content">'+nameHtml+badge+note+linkHtml+photo+'</div></div>';
     }).join('');
 
     var mapId = 'daymap-'+idx;
