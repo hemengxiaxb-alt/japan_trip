@@ -128,6 +128,14 @@
   .stop .note{display:block;font-size:12px;color:var(--ink-soft);margin-top:2px;}
   .badge{display:inline-block;font-size:10.5px;background:var(--vermillion);color:#fff;padding:1px 6px;border-radius:20px;margin-left:6px;vertical-align:1px;}
 
+  .food-card{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-bottom:14px;}
+  .food-card img{display:block;width:100%;max-height:260px;object-fit:contain;background:var(--paper-alt);}
+  .food-card .food-body{padding:14px;}
+  .food-card h3{font-size:14px;margin:0 0 6px;}
+  .food-card p{font-size:13px;color:var(--ink-soft);margin:0 0 8px;}
+  .food-card a{font-size:12px;color:var(--indigo);text-decoration:none;border-bottom:1px dotted currentColor;}
+  [data-theme="night"] .food-card a{color:var(--indigo-deep);}
+
   .day-map{display:none;padding:6px 14px 16px;}
   .day-map.open{display:block;}
   .day-map svg{width:100%;height:auto;display:block;}
@@ -255,7 +263,37 @@
 
   <hr class="rule">
 
-  <!-- ============ 5. 待办清单 ============ -->
+
+  <hr class="rule">
+
+  <!-- ============ 5. 合集里的美食提醒 ============ -->
+  <div class="section">
+    <h2>合集里的美食提醒</h2>
+    <p class="desc">只保留与你现有路线重合、可顺手使用的推荐；图片用于认帖</p>
+
+    <div class="food-card">
+      <img src="https://sns-webpic-qc.xhscdn.com/202609142254/00882edbb256ec57a17fcd67acd4fa62/1040g008324hf3m7g7k0048m7vfl5g7d1qthv7ug!nd_dft_wlteh_webp_3" alt="大丸百货退税5% OFF及餐饮代金券原帖图片" loading="lazy">
+      <div class="food-body">
+        <h3>10/15 心斋桥｜大丸百货餐饮代金券</h3>
+        <p>来自合集笔记：购物退税前先出示优惠券；原帖称满 3,000 日元含税可享 9.5 折，单笔退税满 10 万日元可向柜台确认是否赠送 2,000 日元餐饮代金券。食品、国际精品等可能不参加折扣，现场以柜台规则为准。</p>
+        <a target="_blank" rel="noopener" href="https://www.xiaohongshu.com/board/6aa7fc50000000003100cc41/6aa54eaf0000000028000b64?xsec_token=ABgDVtB5PTahRDth1lcklI5c2H2QvfpgRTzQzCg-eWBpk=&xsec_source=">查看原小红书笔记 →</a>
+      </div>
+    </div>
+
+    <div class="tip-block">
+      <h3>顺手购买｜Pocky（三种）</h3>
+      <p>合集另一篇“买过的好吃好用”笔记的评论明确推荐篮子里的三种 Pocky；已并入 10/15 心斋桥购物提醒。具体口味未在文字中标明，以现场包装为准。</p>
+    </div>
+
+    <div class="tip-block">
+      <h3>本次不加入路线</h3>
+      <p>通天阁附近大阪烧、圣玛丽亚号米饭汉堡属于另一条大阪周游卡暴走路线，与你 10/15 购物、10/16 USJ、10/17 奈良的安排不重合，因此暂不增加绕路点。</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- ============ 6. 待办清单 ============ -->
   <div class="section">
     <h2>待办清单</h2>
     <p class="desc">两人共享，完成一项就从列表消失</p>
@@ -264,7 +302,7 @@
 
   <hr class="rule">
 
-  <!-- ============ 6. 实用贴士 ============ -->
+  <!-- ============ 7. 实用贴士 ============ -->
   <div class="section">
     <h2>实用贴士</h2>
 
@@ -439,10 +477,10 @@
       {time:'10:30', name:'阪急梅田本店', note:'三宅一生、川久保玲、CA4LA、Goyard、Elégance蜜粉饼', loc:'阪急うめだ本店'},
       {time:'12:30', name:'LUCUA / LUCUA 1100', note:'优衣库、MUJI、JINS/Zoff', loc:'LUCUA大阪'},
       {time:'14:00', name:'Grand Front Osaka 南馆', note:'Longchamp、北面、Montbell', loc:'グランフロント大阪 南館'},
-      {time:'15:30', name:'御堂筋・心斋桥段', note:'LV；优惠券提醒：大丸/松坂屋券；LV包购买：先问阪急梅田游客券是否适用，不适用则在大丸心斋桥办理退税', loc:'心斎橋筋商店街'},
+      {time:'15:30', name:'御堂筋・心斋桥段', note:'LV；优惠券提醒：大丸/松坂屋券、餐饮代金券；LV包购买：先确认店内是否支持免消费税与游客优惠', loc:'心斎橋筋商店街'},
       {time:'16:00', name:'大丸心斋桥 envie 柜台', note:'注册会员可试戴4副；试戴后购买 envie 美瞳', loc:'大丸心斎橋店'},
       {time:'16:30', name:'心斋桥PARCO', note:'CA4LA、鬼冢虎', loc:'心斎橋パルコ'},
-      {time:'17:30', name:'心斋桥筋 + 松本清/唐吉诃德', note:'Canmake、指甲刀、Seika洗发水、电动睫毛夹；优惠券提醒：Bic Camera / KOJIMA券、EDION券、唐吉诃德券', loc:'心斎橋筋商店街 マツモトキヨシ'},
+      {time:'17:30', name:'心斋桥筋 + 松本清/唐吉诃德', note:'Canmake、指甲刀、Seika洗发水、电动睫毛夹；Pocky（三种）顺手留意；优惠券提醒：Bic Camera / KOJIMA券、EDION券、唐吉诃德券', loc:'心斎橋筋商店街 マツモトキヨシ'},
       {time:'18:30', name:'无印良品 心斋桥大型店', note:'MUJI 值得买的好物', loc:'無印良品 心斎橋'},
       {time:'19:30', name:'美国村（アメ村）', note:'中古店集中区', loc:'アメリカ村 大阪'}
     ]},
