@@ -10,4 +10,4 @@ binding = "ASSETS"
 # 具体步骤见 README.md
 [[kv_namespaces]]
 binding = "TODO_KV"
-id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+id = "82c1755fce864c6d9df3894b0b36f498"
