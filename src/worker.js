@@ -4,7 +4,6 @@ const DEFAULT_TODOS = [
   { id: "t1", text: "购买关西周游券（建议3日非连续版）" },
   { id: "t2", text: "预约空庭温泉贷切露天风吕（10/16晚，提前在官网订）" },
   { id: "t3", text: "购买京都→东京新干线车票（10/18）" },
-  { id: "t4", text: "查10/20深夜前往羽田机场的末班电车时刻" },
   { id: "t5", text: "10/19一早兑换启用东京地铁48小时票" },
   { id: "t6", text: "准备上网eSIM或Wi-Fi蛋" },
   { id: "t7", text: "换一些日元现金备用" },
@@ -25,7 +24,7 @@ async function getTodos(env) {
   }
 }
 
-export default {
+export default {  
   async fetch(request, env) {
     const url = new URL(request.url);
 
