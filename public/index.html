@@ -1,647 +1,647 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>关西・东京 7日行 ｜ 旅行手册</title>
-<style>
-  :root{
-    --paper:#F5EFE1;
-    --paper-alt:#ECE1C6;
-    --card:#FBF8EF;
-    --ink:#26221B;
-    --ink-soft:#6B6252;
-    --line:rgba(38,34,27,0.14);
-    --indigo:#24405F;
-    --indigo-deep:#17293D;
-    --vermillion:#B8432E;
-    --moss:#5C7A52;
-    --shadow:0 1px 0 rgba(38,34,27,0.06);
-    --radius:2px;
-    --font-display:"Shippori Mincho","Noto Serif SC","Songti SC","PMingLiU",serif;
-    --font-body:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans","Microsoft YaHei",system-ui,sans-serif;
-  }
-  [data-theme="night"]{
-    --paper:#14171D;
-    --paper-alt:#1C212A;
-    --card:#1A1E25;
-    --ink:#E9E2CD;
-    --ink-soft:#9C947F;
-    --line:rgba(233,226,205,0.14);
-    --indigo:#8FB2D6;
-    --indigo-deep:#B7D2EC;
-    --vermillion:#E07A5F;
-    --moss:#93B583;
-    --shadow:0 1px 0 rgba(0,0,0,0.3);
-  }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--font-body);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    transition:background .3s ease,color .3s ease;
-    padding-bottom:64px;
-  }
-  a{color:inherit;}
-  .wrap{max-width:640px;margin:0 auto;padding:0 18px;}
-  .rule{border:none;border-top:1px solid var(--line);margin:36px 0;}
-
-  /* ---------- top bar ---------- */
-  .topbar{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:14px 18px;position:sticky;top:0;z-index:50;
-    background:var(--paper);border-bottom:1px solid var(--line);
-  }
-  .topbar .mark{font-family:var(--font-display);font-size:15px;letter-spacing:.04em;}
-  .topbar .mark small{display:block;font-family:var(--font-body);font-size:11px;color:var(--ink-soft);font-weight:400;margin-top:1px;}
-  .theme-btn{
-    border:1px solid var(--line);background:var(--card);color:var(--ink);
-    width:36px;height:36px;border-radius:50%;font-size:15px;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-  }
-
-  /* ---------- focus card ---------- */
-  .focus{
-    margin:22px 18px 0;padding:22px 20px 20px;
-    background:var(--indigo-deep);color:#F5EFE1;
-    border-radius:6px;position:relative;overflow:hidden;
-  }
-  [data-theme="night"] .focus{background:#0E1620;}
-  .focus::after{
-    content:"";position:absolute;right:-30px;top:-30px;width:140px;height:140px;
-    border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);
-  }
-  .focus .eyebrow{font-size:12px;color:#C9B896;margin-bottom:10px;}
-  .focus .title{font-family:var(--font-display);font-size:21px;line-height:1.4;margin:0 0 3px;}
-  .focus .sub{font-size:13px;color:#D8CBAE;margin:0 0 18px;}
-  .countdown{display:flex;gap:14px;}
-  .countdown .seg{flex:1;text-align:center;}
-  .countdown .num{font-family:var(--font-display);font-size:30px;line-height:1;font-variant-numeric:tabular-nums;}
-  .countdown .lab{font-size:10.5px;color:#C9B896;margin-top:6px;letter-spacing:.03em;}
-  .focus .target-time{margin-top:16px;font-size:11.5px;color:#B7A986;border-top:1px solid rgba(255,255,255,.14);padding-top:12px;}
-
-  /* ---------- section headings ---------- */
-  .section{padding:38px 0 6px;}
-  .section h2{
-    font-family:var(--font-display);font-size:19px;margin:0 0 4px;
-  }
-  .section .desc{font-size:13px;color:var(--ink-soft);margin:0 0 18px;}
-
-  /* ---------- overview map ---------- */
-  .map-card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 10px 6px;}
-  .map-legend{display:flex;flex-wrap:wrap;gap:8px 14px;padding:10px 8px 4px;font-size:11.5px;color:var(--ink-soft);}
-  .map-legend span{display:inline-flex;align-items:center;gap:5px;}
-  .map-legend i{width:9px;height:9px;border-radius:50%;display:inline-block;}
-
-  /* ---------- confirmed list ---------- */
-  .conf-item{
-    display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line);
-  }
-  .conf-item:first-child{border-top:none;}
-  .conf-icon{
-    width:34px;height:34px;flex:none;border-radius:50%;background:var(--paper-alt);
-    display:flex;align-items:center;justify-content:center;font-size:15px;
-  }
-  .conf-body b{display:block;font-size:14.5px;font-weight:600;}
-  .conf-body .meta{font-size:12.5px;color:var(--ink-soft);margin-top:3px;}
-  .conf-body .meta div{margin-top:2px;}
-  .conf-body a.loc{color:var(--indigo);text-decoration:none;border-bottom:1px dotted currentColor;}
-  [data-theme="night"] .conf-body a.loc{color:var(--indigo-deep);}
-
-  /* ---------- day cards ---------- */
-  .day{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--day-color,var(--indigo));
-    border-radius:4px;margin-bottom:14px;overflow:hidden;}
-  .day-head{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;cursor:pointer;}
-  .day-head .dd{display:flex;flex-direction:column;}
-  .day-head .date{font-family:var(--font-display);font-size:15.5px;}
-  .day-head .summary{font-size:12px;color:var(--ink-soft);margin-top:2px;}
-  .day-head .toggle{font-size:11px;color:var(--ink-soft);border:1px solid var(--line);border-radius:20px;padding:5px 10px;white-space:nowrap;background:var(--paper);}
-  .day-stops{padding:2px 14px 12px;}
-  .stop{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line);}
-  .stop:first-child{border-top:none;}
-  .stop .time{width:46px;flex:none;font-size:12.5px;color:var(--ink-soft);padding-top:1px;font-variant-numeric:tabular-nums;}
-  .stop .content{flex:1;font-size:13.5px;}
-  .stop .content a.loc{color:var(--ink);text-decoration:none;border-bottom:1px dotted var(--ink-soft);}
-  .stop .note{display:block;font-size:12px;color:var(--ink-soft);margin-top:2px;}
-  .badge{display:inline-block;font-size:10.5px;background:var(--vermillion);color:#fff;padding:1px 6px;border-radius:20px;margin-left:6px;vertical-align:1px;}
-
-  .stop-image{display:block;width:112px;height:84px;object-fit:cover;border-radius:4px;margin-top:7px;border:1px solid var(--line);background:var(--paper-alt);}
-  .food-map-card{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;}
-  .food-map-card img{display:block;width:100%;max-height:360px;object-fit:contain;background:var(--paper-alt);}
-  .food-map-list{list-style:none;margin:0;padding:4px 14px 10px;}
-  .food-map-list li{padding:9px 0;border-top:1px solid var(--line);font-size:13px;}
-  .food-map-list li:first-child{border-top:none;}
-  .food-map-list a{color:var(--indigo);text-decoration:none;border-bottom:1px dotted currentColor;}
-  [data-theme="night"] .food-map-list a{color:var(--indigo-deep);}
-
-  .food-card{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-bottom:14px;}
-  .food-card img{display:block;width:100%;max-height:260px;object-fit:contain;background:var(--paper-alt);}
-  .food-card .food-body{padding:14px;}
-  .food-card h3{font-size:14px;margin:0 0 6px;}
-  .food-card p{font-size:13px;color:var(--ink-soft);margin:0 0 8px;}
-  .food-card a{font-size:12px;color:var(--indigo);text-decoration:none;border-bottom:1px dotted currentColor;}
-  [data-theme="night"] .food-card a{color:var(--indigo-deep);}
-
-  .day-map{display:none;padding:6px 14px 16px;}
-  .day-map.open{display:block;}
-  .day-map svg{width:100%;height:auto;display:block;}
-  .nav-btn{
-    display:inline-block;margin-top:10px;font-size:12.5px;padding:8px 14px;
-    background:var(--indigo-deep);color:#F5EFE1;border-radius:20px;text-decoration:none;
-  }
-  [data-theme="night"] .nav-btn{background:#3A5570;}
-
-  /* ---------- todo ---------- */
-  .todo-list{list-style:none;margin:0;padding:0;}
-  .todo-list li{
-    display:flex;align-items:center;justify-content:space-between;gap:10px;
-    padding:13px 0;border-top:1px solid var(--line);font-size:13.5px;
-  }
-  .todo-list li:first-child{border-top:none;}
-  .todo-done-btn{
-    flex:none;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);
-    font-size:11.5px;padding:6px 12px;border-radius:20px;cursor:pointer;
-  }
-  .todo-done-btn:active{background:var(--moss);color:#fff;border-color:var(--moss);}
-  .todo-empty,.todo-offline{padding:14px 0;font-size:13px;color:var(--ink-soft);}
-
-  /* ---------- tips ---------- */
-  .tip-block{padding:14px 0;border-top:1px solid var(--line);}
-  .tip-block:first-child{border-top:none;}
-  .tip-block h3{font-size:14px;margin:0 0 6px;}
-  .tip-block p{font-size:13px;color:var(--ink-soft);margin:0;}
-  .tip-block ul{margin:6px 0 0;padding-left:18px;font-size:13px;color:var(--ink-soft);}
-  .tip-block li{margin-bottom:4px;}
-
-  footer{padding:40px 18px 10px;text-align:center;font-size:11.5px;color:var(--ink-soft);}
-</style>
-</head>
-<body>
-
-<div class="topbar">
-  <div class="mark">関西 ・ 東京<small>2026.10.14 — 10.21</small></div>
-  <button class="theme-btn" id="themeBtn" aria-label="切换日夜模式">🌙</button>
-</div>
-
-<!-- ============ 1. 此刻关注 ============ -->
-<div class="focus" id="focusCard">
-  <div class="eyebrow">此刻关注</div>
-  <p class="title" id="focusTitle">加载中…</p>
-  <p class="sub" id="focusSub"></p>
-  <div class="countdown">
-    <div class="seg"><div class="num" id="cdDays">--</div><div class="lab">天</div></div>
-    <div class="seg"><div class="num" id="cdHours">--</div><div class="lab">时</div></div>
-    <div class="seg"><div class="num" id="cdMins">--</div><div class="lab">分</div></div>
-    <div class="seg"><div class="num" id="cdSecs">--</div><div class="lab">秒</div></div>
+  <!DOCTYPE html>
+  <html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>关西・东京 7日行 ｜ 旅行手册</title>
+  <style>
+    :root{
+      --paper:#F5EFE1;
+      --paper-alt:#ECE1C6;
+      --card:#FBF8EF;
+      --ink:#26221B;
+      --ink-soft:#6B6252;
+      --line:rgba(38,34,27,0.14);
+      --indigo:#24405F;
+      --indigo-deep:#17293D;
+      --vermillion:#B8432E;
+      --moss:#5C7A52;
+      --shadow:0 1px 0 rgba(38,34,27,0.06);
+      --radius:2px;
+      --font-display:"Shippori Mincho","Noto Serif SC","Songti SC","PMingLiU",serif;
+      --font-body:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans","Microsoft YaHei",system-ui,sans-serif;
+    }
+    [data-theme="night"]{
+      --paper:#14171D;
+      --paper-alt:#1C212A;
+      --card:#1A1E25;
+      --ink:#E9E2CD;
+      --ink-soft:#9C947F;
+      --line:rgba(233,226,205,0.14);
+      --indigo:#8FB2D6;
+      --indigo-deep:#B7D2EC;
+      --vermillion:#E07A5F;
+      --moss:#93B583;
+      --shadow:0 1px 0 rgba(0,0,0,0.3);
+    }
+    *{box-sizing:border-box;}
+    html,body{margin:0;padding:0;}
+    body{
+      background:var(--paper);
+      color:var(--ink);
+      font-family:var(--font-body);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      transition:background .3s ease,color .3s ease;
+      padding-bottom:64px;
+    }
+    a{color:inherit;}
+    .wrap{max-width:640px;margin:0 auto;padding:0 18px;}
+    .rule{border:none;border-top:1px solid var(--line);margin:36px 0;}
+  
+    /* ---------- top bar ---------- */
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 18px;position:sticky;top:0;z-index:50;
+      background:var(--paper);border-bottom:1px solid var(--line);
+    }
+    .topbar .mark{font-family:var(--font-display);font-size:15px;letter-spacing:.04em;}
+    .topbar .mark small{display:block;font-family:var(--font-body);font-size:11px;color:var(--ink-soft);font-weight:400;margin-top:1px;}
+    .theme-btn{
+      border:1px solid var(--line);background:var(--card);color:var(--ink);
+      width:36px;height:36px;border-radius:50%;font-size:15px;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+    }
+  
+    /* ---------- focus card ---------- */
+    .focus{
+      margin:22px 18px 0;padding:22px 20px 20px;
+      background:var(--indigo-deep);color:#F5EFE1;
+      border-radius:6px;position:relative;overflow:hidden;
+    }
+    [data-theme="night"] .focus{background:#0E1620;}
+    .focus::after{
+      content:"";position:absolute;right:-30px;top:-30px;width:140px;height:140px;
+      border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);
+    }
+    .focus .eyebrow{font-size:12px;color:#C9B896;margin-bottom:10px;}
+    .focus .title{font-family:var(--font-display);font-size:21px;line-height:1.4;margin:0 0 3px;}
+    .focus .sub{font-size:13px;color:#D8CBAE;margin:0 0 18px;}
+    .countdown{display:flex;gap:14px;}
+    .countdown .seg{flex:1;text-align:center;}
+    .countdown .num{font-family:var(--font-display);font-size:30px;line-height:1;font-variant-numeric:tabular-nums;}
+    .countdown .lab{font-size:10.5px;color:#C9B896;margin-top:6px;letter-spacing:.03em;}
+    .focus .target-time{margin-top:16px;font-size:11.5px;color:#B7A986;border-top:1px solid rgba(255,255,255,.14);padding-top:12px;}
+  
+    /* ---------- section headings ---------- */
+    .section{padding:38px 0 6px;}
+    .section h2{
+      font-family:var(--font-display);font-size:19px;margin:0 0 4px;
+    }
+    .section .desc{font-size:13px;color:var(--ink-soft);margin:0 0 18px;}
+  
+    /* ---------- overview map ---------- */
+    .map-card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 10px 6px;}
+    .map-legend{display:flex;flex-wrap:wrap;gap:8px 14px;padding:10px 8px 4px;font-size:11.5px;color:var(--ink-soft);}
+    .map-legend span{display:inline-flex;align-items:center;gap:5px;}
+    .map-legend i{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  
+    /* ---------- confirmed list ---------- */
+    .conf-item{
+      display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line);
+    }
+    .conf-item:first-child{border-top:none;}
+    .conf-icon{
+      width:34px;height:34px;flex:none;border-radius:50%;background:var(--paper-alt);
+      display:flex;align-items:center;justify-content:center;font-size:15px;
+    }
+    .conf-body b{display:block;font-size:14.5px;font-weight:600;}
+    .conf-body .meta{font-size:12.5px;color:var(--ink-soft);margin-top:3px;}
+    .conf-body .meta div{margin-top:2px;}
+    .conf-body a.loc{color:var(--indigo);text-decoration:none;border-bottom:1px dotted currentColor;}
+    [data-theme="night"] .conf-body a.loc{color:var(--indigo-deep);}
+  
+    /* ---------- day cards ---------- */
+    .day{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--day-color,var(--indigo));
+      border-radius:4px;margin-bottom:14px;overflow:hidden;}
+    .day-head{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;cursor:pointer;}
+    .day-head .dd{display:flex;flex-direction:column;}
+    .day-head .date{font-family:var(--font-display);font-size:15.5px;}
+    .day-head .summary{font-size:12px;color:var(--ink-soft);margin-top:2px;}
+    .day-head .toggle{font-size:11px;color:var(--ink-soft);border:1px solid var(--line);border-radius:20px;padding:5px 10px;white-space:nowrap;background:var(--paper);}
+    .day-stops{padding:2px 14px 12px;}
+    .stop{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line);}
+    .stop:first-child{border-top:none;}
+    .stop .time{width:46px;flex:none;font-size:12.5px;color:var(--ink-soft);padding-top:1px;font-variant-numeric:tabular-nums;}
+    .stop .content{flex:1;font-size:13.5px;}
+    .stop .content a.loc{color:var(--ink);text-decoration:none;border-bottom:1px dotted var(--ink-soft);}
+    .stop .note{display:block;font-size:12px;color:var(--ink-soft);margin-top:2px;}
+    .badge{display:inline-block;font-size:10.5px;background:var(--vermillion);color:#fff;padding:1px 6px;border-radius:20px;margin-left:6px;vertical-align:1px;}
+  
+    .stop-image{display:block;width:112px;height:84px;object-fit:cover;border-radius:4px;margin-top:7px;border:1px solid var(--line);background:var(--paper-alt);}
+    .food-map-card{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;}
+    .food-map-card img{display:block;width:100%;max-height:360px;object-fit:contain;background:var(--paper-alt);}
+    .food-map-list{list-style:none;margin:0;padding:4px 14px 10px;}
+    .food-map-list li{padding:9px 0;border-top:1px solid var(--line);font-size:13px;}
+    .food-map-list li:first-child{border-top:none;}
+    .food-map-list a{color:var(--indigo);text-decoration:none;border-bottom:1px dotted currentColor;}
+    [data-theme="night"] .food-map-list a{color:var(--indigo-deep);}
+  
+    .food-card{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-bottom:14px;}
+    .food-card img{display:block;width:100%;max-height:260px;object-fit:contain;background:var(--paper-alt);}
+    .food-card .food-body{padding:14px;}
+    .food-card h3{font-size:14px;margin:0 0 6px;}
+    .food-card p{font-size:13px;color:var(--ink-soft);margin:0 0 8px;}
+    .food-card a{font-size:12px;color:var(--indigo);text-decoration:none;border-bottom:1px dotted currentColor;}
+    [data-theme="night"] .food-card a{color:var(--indigo-deep);}
+  
+    .day-map{display:none;padding:6px 14px 16px;}
+    .day-map.open{display:block;}
+    .day-map svg{width:100%;height:auto;display:block;}
+    .nav-btn{
+      display:inline-block;margin-top:10px;font-size:12.5px;padding:8px 14px;
+      background:var(--indigo-deep);color:#F5EFE1;border-radius:20px;text-decoration:none;
+    }
+    [data-theme="night"] .nav-btn{background:#3A5570;}
+  
+    /* ---------- todo ---------- */
+    .todo-list{list-style:none;margin:0;padding:0;}
+    .todo-list li{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:13px 0;border-top:1px solid var(--line);font-size:13.5px;
+    }
+    .todo-list li:first-child{border-top:none;}
+    .todo-done-btn{
+      flex:none;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);
+      font-size:11.5px;padding:6px 12px;border-radius:20px;cursor:pointer;
+    }
+    .todo-done-btn:active{background:var(--moss);color:#fff;border-color:var(--moss);}
+    .todo-empty,.todo-offline{padding:14px 0;font-size:13px;color:var(--ink-soft);}
+  
+    /* ---------- tips ---------- */
+    .tip-block{padding:14px 0;border-top:1px solid var(--line);}
+    .tip-block:first-child{border-top:none;}
+    .tip-block h3{font-size:14px;margin:0 0 6px;}
+    .tip-block p{font-size:13px;color:var(--ink-soft);margin:0;}
+    .tip-block ul{margin:6px 0 0;padding-left:18px;font-size:13px;color:var(--ink-soft);}
+    .tip-block li{margin-bottom:4px;}
+  
+    footer{padding:40px 18px 10px;text-align:center;font-size:11.5px;color:var(--ink-soft);}
+  </style>
+  </head>
+  <body>
+  
+  <div class="topbar">
+    <div class="mark">関西 ・ 東京<small>2026.10.14 — 10.21</small></div>
+    <button class="theme-btn" id="themeBtn" aria-label="切换日夜模式">🌙</button>
   </div>
-  <div class="target-time" id="focusTargetTime"></div>
-</div>
-
-<div class="wrap">
-
-  <!-- ============ 2. 总览地图 ============ -->
-  <div class="section">
-    <h2>行程总览</h2>
-    <p class="desc">大阪住4晚 → 京都中转 → 东京住2晚，示意图非精确比例</p>
-    <div class="map-card">
-      <svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" id="overviewMap">
-        <!-- day paths (hand-drawn feel via slight curve wobble) -->
-        <path d="M42,188 Q66,166 92,150" fill="none" stroke="#7089A6" stroke-width="3" stroke-linecap="round"/>
-        <path d="M92,150 Q66,146 58,140 Q52,136 60,132 Q78,124 92,150" fill="none" stroke="#C08A4E" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="1 6"/>
-        <path d="M92,150 Q60,150 44,144 Q34,140 46,134 Q66,126 92,150" fill="none" stroke="#BD4430" stroke-width="2.6" stroke-linecap="round"/>
-        <path d="M92,150 Q118,182 141,206 Q124,192 92,150" fill="none" stroke="#5C7A52" stroke-width="2.6" stroke-linecap="round"/>
-        <path d="M92,150 Q120,120 150,100 Q230,64 300,66" fill="none" stroke="#8A5A7A" stroke-width="3" stroke-linecap="round"/>
-        <path d="M300,66 Q318,50 336,62 Q320,74 300,66" fill="none" stroke="#24405F" stroke-width="2.6" stroke-linecap="round"/>
-        <path d="M300,66 Q292,88 300,104 Q308,88 300,66" fill="none" stroke="#A6763E" stroke-width="2.6" stroke-linecap="round"/>
-        <path d="M300,66 Q330,96 352,112" fill="none" stroke="#6B6252" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 6"/>
-
-        <!-- nodes -->
-        <circle cx="42" cy="188" r="4" fill="#6B6252"/>
-        <text x="42" y="204" font-size="10" text-anchor="middle" fill="#6B6252">关西机场</text>
-
-        <circle cx="92" cy="150" r="6" fill="#7089A6"/>
-        <text x="92" y="136" font-size="11" text-anchor="middle" fill="#26221B" font-weight="600">大阪</text>
-        <text x="92" y="222" font-size="9.5" text-anchor="middle" fill="#6B6252">10/14–10/18 · 4晚</text>
-
-        <circle cx="141" cy="206" r="4" fill="#5C7A52"/>
-        <text x="141" y="220" font-size="10" text-anchor="middle" fill="#6B6252">奈良</text>
-
-        <circle cx="150" cy="100" r="5" fill="#8A5A7A"/>
-        <text x="150" y="88" font-size="10.5" text-anchor="middle" fill="#26221B">京都</text>
-
-        <circle cx="300" cy="66" r="6" fill="#24405F"/>
-        <text x="300" y="52" font-size="11" text-anchor="middle" fill="#26221B" font-weight="600">东京</text>
-        <text x="300" y="120" font-size="9.5" text-anchor="middle" fill="#6B6252">10/18–10/20 · 2晚</text>
-
-        <circle cx="352" cy="112" r="4" fill="#6B6252"/>
-        <text x="360" y="112" font-size="10" text-anchor="start" fill="#6B6252">羽田</text>
-      </svg>
-      <div class="map-legend">
-        <span><i style="background:#7089A6"></i>10/14 抵达</span>
-        <span><i style="background:#C08A4E"></i>10/15 购物</span>
-        <span><i style="background:#BD4430"></i>10/16 USJ</span>
-        <span><i style="background:#5C7A52"></i>10/17 奈良</span>
-        <span><i style="background:#8A5A7A"></i>10/18 转东京</span>
-        <span><i style="background:#24405F"></i>10/19 浅草・银座</span>
-        <span><i style="background:#A6763E"></i>10/20 中目黑・涉谷</span>
-        <span><i style="background:#6B6252"></i>10/21 回程</span>
+  
+  <!-- ============ 1. 此刻关注 ============ -->
+  <div class="focus" id="focusCard">
+    <div class="eyebrow">此刻关注</div>
+    <p class="title" id="focusTitle">加载中…</p>
+    <p class="sub" id="focusSub"></p>
+    <div class="countdown">
+      <div class="seg"><div class="num" id="cdDays">--</div><div class="lab">天</div></div>
+      <div class="seg"><div class="num" id="cdHours">--</div><div class="lab">时</div></div>
+      <div class="seg"><div class="num" id="cdMins">--</div><div class="lab">分</div></div>
+      <div class="seg"><div class="num" id="cdSecs">--</div><div class="lab">秒</div></div>
+    </div>
+    <div class="target-time" id="focusTargetTime"></div>
+  </div>
+  
+  <div class="wrap">
+  
+    <!-- ============ 2. 总览地图 ============ -->
+    <div class="section">
+      <h2>行程总览</h2>
+      <p class="desc">大阪住4晚 → 京都中转 → 东京住2晚，示意图非精确比例</p>
+      <div class="map-card">
+        <svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" id="overviewMap">
+          <!-- day paths (hand-drawn feel via slight curve wobble) -->
+          <path d="M42,188 Q66,166 92,150" fill="none" stroke="#7089A6" stroke-width="3" stroke-linecap="round"/>
+          <path d="M92,150 Q66,146 58,140 Q52,136 60,132 Q78,124 92,150" fill="none" stroke="#C08A4E" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="1 6"/>
+          <path d="M92,150 Q60,150 44,144 Q34,140 46,134 Q66,126 92,150" fill="none" stroke="#BD4430" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M92,150 Q118,182 141,206 Q124,192 92,150" fill="none" stroke="#5C7A52" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M92,150 Q120,120 150,100 Q230,64 300,66" fill="none" stroke="#8A5A7A" stroke-width="3" stroke-linecap="round"/>
+          <path d="M300,66 Q318,50 336,62 Q320,74 300,66" fill="none" stroke="#24405F" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M300,66 Q292,88 300,104 Q308,88 300,66" fill="none" stroke="#A6763E" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M300,66 Q330,96 352,112" fill="none" stroke="#6B6252" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 6"/>
+  
+          <!-- nodes -->
+          <circle cx="42" cy="188" r="4" fill="#6B6252"/>
+          <text x="42" y="204" font-size="10" text-anchor="middle" fill="#6B6252">关西机场</text>
+  
+          <circle cx="92" cy="150" r="6" fill="#7089A6"/>
+          <text x="92" y="136" font-size="11" text-anchor="middle" fill="#26221B" font-weight="600">大阪</text>
+          <text x="92" y="222" font-size="9.5" text-anchor="middle" fill="#6B6252">10/14–10/18 · 4晚</text>
+  
+          <circle cx="141" cy="206" r="4" fill="#5C7A52"/>
+          <text x="141" y="220" font-size="10" text-anchor="middle" fill="#6B6252">奈良</text>
+  
+          <circle cx="150" cy="100" r="5" fill="#8A5A7A"/>
+          <text x="150" y="88" font-size="10.5" text-anchor="middle" fill="#26221B">京都</text>
+  
+          <circle cx="300" cy="66" r="6" fill="#24405F"/>
+          <text x="300" y="52" font-size="11" text-anchor="middle" fill="#26221B" font-weight="600">东京</text>
+          <text x="300" y="120" font-size="9.5" text-anchor="middle" fill="#6B6252">10/18–10/20 · 2晚</text>
+  
+          <circle cx="352" cy="112" r="4" fill="#6B6252"/>
+          <text x="360" y="112" font-size="10" text-anchor="start" fill="#6B6252">羽田</text>
+        </svg>
+        <div class="map-legend">
+          <span><i style="background:#7089A6"></i>10/14 抵达</span>
+          <span><i style="background:#C08A4E"></i>10/15 购物</span>
+          <span><i style="background:#BD4430"></i>10/16 USJ</span>
+          <span><i style="background:#5C7A52"></i>10/17 奈良</span>
+          <span><i style="background:#8A5A7A"></i>10/18 转东京</span>
+          <span><i style="background:#24405F"></i>10/19 浅草・银座</span>
+          <span><i style="background:#A6763E"></i>10/20 中目黑・涉谷</span>
+          <span><i style="background:#6B6252"></i>10/21 回程</span>
+        </div>
       </div>
     </div>
-  </div>
-
-  <hr class="rule">
-
-  <hr class="rule">
-
-  <!-- ============ 3. 餐饮地点总览 ============ -->
-  <div class="section">
-    <h2>餐饮地点总览</h2>
-    <p class="desc">先看区域，再按当天午餐/晚餐进入；地图图片来自你提供的心斋桥路线图</p>
-    <div class="food-map-card">
-      <img src="codex-clipboard-3abb250a-5e9a-4fa7-95ea-008c4839e41f.png" alt="心斋桥购物与餐饮位置地图" loading="lazy">
-      <ul class="food-map-list">
-        <li>梅田午餐｜<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E7%89%9B%E3%82%AB%E3%83%84%E4%BA%AC%E9%83%BD%E5%8B%9D%E7%89%9B%20%E3%83%A8%E3%83%89%E3%83%90%E3%82%B7LINKS%E6%A2%85%E7%94%B0%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E5%8C%97%E5%8C%BA%E5%A4%A7%E6%B7%B1%E7%94%BA1-1%20LINKS%20UMEDA%208F">京都胜牛 LINKS UMEDA店</a><br><span class="note">大阪市北区大深町1-1 LINKS UMEDA 8F</span></li>
-        <li>心斋桥晚餐｜<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E4%B8%80%E8%98%AD%20%E5%BF%83%E6%96%8E%E6%A9%8B%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%BF%83%E6%96%8E%E6%A9%8B%E7%AD%8B1-3-29">一兰心斋桥店</a><br><span class="note">大阪市中央区心斋桥筋1-3-29</span></li>
-        <li>难波迟午餐｜<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Spice%20Kingdom%20%E3%81%AA%E3%82%93%E3%81%B0CITY%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25-1-60">Spice Kingdom なんばCITY店</a><br><span class="note">大阪市中央区难波5-1-60 なんばCITY本馆1F</span></li>
-        <li>难波晚餐选项 A｜<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E7%82%AD%E7%81%AB%E7%84%BC%E3%81%A8%E3%82%8A%20%E3%81%88%E3%82%93%E3%82%84%20%E9%9B%A3%E6%B3%A2%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A24-6-4">烧鸟店 Enya 难波店</a><br><span class="note">大阪市中央区难波4-6-4</span></li>
-        <li>日本桥晚餐选项 B｜<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=YUMEMARU%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%97%A5%E6%9C%AC%E6%A9%8B1-1-14%202F">YUMEMARU（ユメマル）</a><br><span class="note">大阪市中央区日本桥1-1-14 2F</span></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ============ 4. 已确认 ============ -->
-  <div class="section">
-    <h2>已确认</h2>
-    <p class="desc">机票 · 酒店 · 交通票券</p>
-    <div id="confirmedList"></div>
-  </div>
-
-  <hr class="rule">
-
-  <!-- ============ 5. 逐日行程 ============ -->
-  <div class="section">
-    <h2>逐日行程</h2>
-    <p class="desc">点「路线」展开当天地图和一键导航</p>
-    <div id="dayList"></div>
-  </div>
-
-  <hr class="rule">
-
+  
     <hr class="rule">
-
-  <!-- ============ 6. 待办清单 ============ -->
-  <div class="section">
-    <h2>待办清单</h2>
-    <p class="desc">两人共享，完成一项就从列表消失</p>
-    <ul class="todo-list" id="todoList"><li class="todo-empty">加载中…</li></ul>
+  
+    <hr class="rule">
+  
+    <!-- ============ 3. 餐饮地点总览 ============ -->
+    <div class="section">
+      <h2>餐饮地点总览</h2>
+      <p class="desc">先看区域，再按当天午餐/晚餐进入；地图图片来自你提供的心斋桥路线图</p>
+      <div class="food-map-card">
+        <img src="codex-clipboard-3abb250a-5e9a-4fa7-95ea-008c4839e41f.png" alt="心斋桥购物与餐饮位置地图" loading="lazy">
+        <ul class="food-map-list">
+          <li>梅田午餐｜<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E7%89%9B%E3%82%AB%E3%83%84%E4%BA%AC%E9%83%BD%E5%8B%9D%E7%89%9B%20%E3%83%A8%E3%83%89%E3%83%90%E3%82%B7LINKS%E6%A2%85%E7%94%B0%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E5%8C%97%E5%8C%BA%E5%A4%A7%E6%B7%B1%E7%94%BA1-1%20LINKS%20UMEDA%208F">京都胜牛 LINKS UMEDA店</a><br><span class="note">大阪市北区大深町1-1 LINKS UMEDA 8F</span></li>
+          <li>心斋桥晚餐｜<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E4%B8%80%E8%98%AD%20%E5%BF%83%E6%96%8E%E6%A9%8B%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%BF%83%E6%96%8E%E6%A9%8B%E7%AD%8B1-3-29">一兰心斋桥店</a><br><span class="note">大阪市中央区心斋桥筋1-3-29</span></li>
+          <li>难波迟午餐｜<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Spice%20Kingdom%20%E3%81%AA%E3%82%93%E3%81%B0CITY%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A25-1-60">Spice Kingdom なんばCITY店</a><br><span class="note">大阪市中央区难波5-1-60 なんばCITY本馆1F</span></li>
+          <li>难波晚餐选项 A｜<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E7%82%AD%E7%81%AB%E7%84%BC%E3%81%A8%E3%82%8A%20%E3%81%88%E3%82%93%E3%82%84%20%E9%9B%A3%E6%B3%A2%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A24-6-4">烧鸟店 Enya 难波店</a><br><span class="note">大阪市中央区难波4-6-4</span></li>
+          <li>日本桥晚餐选项 B｜<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=YUMEMARU%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%97%A5%E6%9C%AC%E6%A9%8B1-1-14%202F">YUMEMARU（ユメマル）</a><br><span class="note">大阪市中央区日本桥1-1-14 2F</span></li>
+        </ul>
+      </div>
+    </div>
+  
+    <!-- ============ 4. 已确认 ============ -->
+    <div class="section">
+      <h2>已确认</h2>
+      <p class="desc">机票 · 酒店 · 交通票券</p>
+      <div id="confirmedList"></div>
+    </div>
+  
+    <hr class="rule">
+  
+    <!-- ============ 5. 逐日行程 ============ -->
+    <div class="section">
+      <h2>逐日行程</h2>
+      <p class="desc">点「路线」展开当天地图和一键导航</p>
+      <div id="dayList"></div>
+    </div>
+  
+    <hr class="rule">
+  
+      <hr class="rule">
+  
+    <!-- ============ 6. 待办清单 ============ -->
+    <div class="section">
+      <h2>待办清单</h2>
+      <p class="desc">两人共享，完成一项就从列表消失</p>
+      <ul class="todo-list" id="todoList"><li class="todo-empty">加载中…</li></ul>
+    </div>
+  
+    <hr class="rule">
+  
+    <!-- ============ 7. 实用贴士 ============ -->
+    <div class="section">
+      <h2>实用贴士</h2>
+  
+      <div class="tip-block">
+        <h3>退税怎么办</h3>
+        <p>同一店铺当日消费满 5,000 日元（含税）即可退税，结账时出示护照，免税品会封装在专用袋子里，出境前不要拆封。机场也有电子退税单据核验闸机，出境安检前记得预留 10–15 分钟排队时间。</p>
+      </div>
+  
+      <div class="tip-block">
+        <h3>交通卡</h3>
+        <p>建议开通手机 Suica 或 PASMO，大部分商店、地铁、便利店都能刷。关西周游券和东京地铁 48 小时券都是各自区域的补充票，不能互相替代。</p>
+      </div>
+  
+      <div class="tip-block">
+        <h3>天气与穿着</h3>
+        <p>10月中旬大阪、东京日间气温约 20–24℃，早晚会降到 15℃左右，建议带一件薄外套或开衫，京都/奈良户外活动多，穿好走的鞋。</p>
+      </div>
+  
+      <div class="tip-block">
+        <h3>其他注意事项</h3>
+        <ul>
+          <li>插座为 A 型两孔，电压 100V，国内设备一般可直接用</li>
+          <li>垃圾要分类丢弃，便利店门口的垃圾桶通常只收当场购买的垃圾</li>
+          <li>地铁/JR 末班车大多在 23:30–0:30 之间，10/20 深夜去羽田尤其要提前查好当天时刻表</li>
+          <li>紧急电话：警察 110，急救/火警 119</li>
+        </ul>
+      </div>
+    </div>
+  
   </div>
-
-  <hr class="rule">
-
-  <!-- ============ 7. 实用贴士 ============ -->
-  <div class="section">
-    <h2>实用贴士</h2>
-
-    <div class="tip-block">
-      <h3>退税怎么办</h3>
-      <p>同一店铺当日消费满 5,000 日元（含税）即可退税，结账时出示护照，免税品会封装在专用袋子里，出境前不要拆封。机场也有电子退税单据核验闸机，出境安检前记得预留 10–15 分钟排队时间。</p>
-    </div>
-
-    <div class="tip-block">
-      <h3>交通卡</h3>
-      <p>建议开通手机 Suica 或 PASMO，大部分商店、地铁、便利店都能刷。关西周游券和东京地铁 48 小时券都是各自区域的补充票，不能互相替代。</p>
-    </div>
-
-    <div class="tip-block">
-      <h3>天气与穿着</h3>
-      <p>10月中旬大阪、东京日间气温约 20–24℃，早晚会降到 15℃左右，建议带一件薄外套或开衫，京都/奈良户外活动多，穿好走的鞋。</p>
-    </div>
-
-    <div class="tip-block">
-      <h3>其他注意事项</h3>
-      <ul>
-        <li>插座为 A 型两孔，电压 100V，国内设备一般可直接用</li>
-        <li>垃圾要分类丢弃，便利店门口的垃圾桶通常只收当场购买的垃圾</li>
-        <li>地铁/JR 末班车大多在 23:30–0:30 之间，10/20 深夜去羽田尤其要提前查好当天时刻表</li>
-        <li>紧急电话：警察 110，急救/火警 119</li>
-      </ul>
-    </div>
-  </div>
-
-</div>
-
-<footer>关西・东京行 ｜ 两人份</footer>
-
-<script>
-(function(){
-  "use strict";
-
-  /* ================= 主题切换 ================= */
-  var themeBtn = document.getElementById('themeBtn');
-  function applyTheme(t){
-    document.documentElement.setAttribute('data-theme', t);
-    themeBtn.textContent = t === 'night' ? '☀️' : '🌙';
-    try{ localStorage.setItem('trip-theme', t); }catch(e){}
-  }
-  (function initTheme(){
-    var saved = null;
-    try{ saved = localStorage.getItem('trip-theme'); }catch(e){}
-    if(saved){ applyTheme(saved); return; }
-    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    applyTheme(prefersDark ? 'night' : 'day');
-  })();
-  themeBtn.addEventListener('click', function(){
-    var cur = document.documentElement.getAttribute('data-theme');
-    applyTheme(cur === 'night' ? 'day' : 'night');
-  });
-
-  /* ================= 地图导航工具 ================= */
-  function mapsUrl(q){ return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q); }
-  function mapsDirUrl(stops){
-    var dest = stops[stops.length-1];
-    var wps = stops.slice(0,-1);
-    var url = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(dest) + '&travelmode=transit';
-    if(wps.length) url += '&waypoints=' + encodeURIComponent(wps.join('|'));
-    return url;
-  }
-  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
-
-  /* ================= 倒计时事件（均为带时区的 ISO 时间，跨时区打开结果一致） ================= */
-  var events = [
-    {iso:"2026-10-14T15:50:00+08:00", title:"从香港机场出发", sub:"UO862 飞往大阪关西机场", tz:"香港时间"},
-    {iso:"2026-10-14T20:35:00+09:00", title:"抵达关西机场", sub:"落地大阪，前往本町酒店", tz:"日本时间"},
-    {iso:"2026-10-15T09:30:00+09:00", title:"大阪购物日开始", sub:"アイプリモ梅田 HERBIS ENT 取戒指", tz:"日本时间"},
-    {iso:"2026-10-16T08:30:00+09:00", title:"环球影城开园", sub:"USJ 全天，傍晚去空庭温泉", tz:"日本时间"},
-    {iso:"2026-10-17T08:30:00+09:00", title:"奈良一日游出发", sub:"近铁难波站启用奈良一日券或IC卡", tz:"日本时间"},
-    {iso:"2026-10-18T11:00:00+09:00", title:"大阪酒店退房", sub:"带行李前往京都中转", tz:"日本时间"},
-    {iso:"2026-10-18T17:36:00+09:00", title:"新干线 Nozomi 462 出发", sub:"17:36 京都→19:51 东京，普通车指定席 D＋E", tz:"日本时间"},
-    {iso:"2026-10-19T09:00:00+09:00", title:"浅草寺", sub:"仲见世通り，之后前往日本桥・银座", tz:"日本时间"},
-    {iso:"2026-10-20T10:00:00+09:00", title:"东京酒店退房", sub:"行李寄存后继续中目黑・涉谷", tz:"日本时间"},
-    {iso:"2026-10-20T23:00:00+09:00", title:"前往羽田机场", sub:"注意末班电车时刻", tz:"日本时间"},
-    {iso:"2026-10-21T02:20:00+09:00", title:"从羽田机场起飞", sub:"UO629 飞回香港", tz:"日本时间"},
-    {iso:"2026-10-21T06:00:00+08:00", title:"抵达香港", sub:"旅程结束", tz:"香港时间"}
-  ];
-
-  function findNext(){
-    var now = new Date();
-    for(var i=0;i<events.length;i++){
-      if(new Date(events[i].iso) > now) return events[i];
+  
+  <footer>关西・东京行 ｜ 两人份</footer>
+  
+  <script>
+  (function(){
+    "use strict";
+  
+    /* ================= 主题切换 ================= */
+    var themeBtn = document.getElementById('themeBtn');
+    function applyTheme(t){
+      document.documentElement.setAttribute('data-theme', t);
+      themeBtn.textContent = t === 'night' ? '☀️' : '🌙';
+      try{ localStorage.setItem('trip-theme', t); }catch(e){}
     }
-    return null;
-  }
-
-  function pad(n){ return String(n).padStart(2,'0'); }
-
-  function tickCountdown(){
-    var next = findNext();
-    var titleEl = document.getElementById('focusTitle');
-    var subEl = document.getElementById('focusSub');
-    var timeEl = document.getElementById('focusTargetTime');
-    if(!next){
-      titleEl.textContent = '旅程已结束';
-      subEl.textContent = '欢迎回家 🏠';
-      ['cdDays','cdHours','cdMins','cdSecs'].forEach(function(id){document.getElementById(id).textContent='--';});
-      timeEl.textContent = '';
-      return;
+    (function initTheme(){
+      var saved = null;
+      try{ saved = localStorage.getItem('trip-theme'); }catch(e){}
+      if(saved){ applyTheme(saved); return; }
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefersDark ? 'night' : 'day');
+    })();
+    themeBtn.addEventListener('click', function(){
+      var cur = document.documentElement.getAttribute('data-theme');
+      applyTheme(cur === 'night' ? 'day' : 'night');
+    });
+  
+    /* ================= 地图导航工具 ================= */
+    function mapsUrl(q){ return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q); }
+    function mapsDirUrl(stops){
+      var dest = stops[stops.length-1];
+      var wps = stops.slice(0,-1);
+      var url = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(dest) + '&travelmode=transit';
+      if(wps.length) url += '&waypoints=' + encodeURIComponent(wps.join('|'));
+      return url;
     }
-    titleEl.textContent = next.title;
-    subEl.textContent = next.sub;
-    var d = new Date(next.iso);
-    var diff = Math.max(0, d - new Date());
-    var days = Math.floor(diff / 86400000);
-    var hours = Math.floor(diff % 86400000 / 3600000);
-    var mins = Math.floor(diff % 3600000 / 60000);
-    var secs = Math.floor(diff % 60000 / 1000);
-    document.getElementById('cdDays').textContent = days;
-    document.getElementById('cdHours').textContent = pad(hours);
-    document.getElementById('cdMins').textContent = pad(mins);
-    document.getElementById('cdSecs').textContent = pad(secs);
-    var localStr = d.toLocaleString('zh-CN', {month:'numeric', day:'numeric', hour:'2-digit', minute:'2-digit'});
-    timeEl.textContent = '目标：' + next.iso.slice(0,16).replace('T',' ') + '（' + next.tz + '）· 你所在时区约 ' + localStr;
-  }
-  tickCountdown();
-  setInterval(tickCountdown, 1000);
-
-  /* ================= 已确认清单 ================= */
-  var confirmed = [
-    {
-      icon:'✈️', title:'UO862 香港快运 · 香港 → 大阪关西',
-      meta:['2026-10-14（周三）15:50 HKG → 20:35 KIX（日本时间）', '香港国际机场 客运大楼2 → 关西国际机场 航站楼1']
-    },
-    {
-      icon:'✈️', title:'UO629 香港快运 · 东京羽田 → 香港',
-      meta:['2026-10-21（周三）02:20 HND → 06:00 HKG（香港时间）', '羽田机场 航站楼3 → 香港国际机场 航站楼1']
-    },
-    {
-      icon:'🏨', title:'微笑酒店 PREMIUM 大阪本町',
-      meta:['入住 10/14 14:00后 · 退房 10/18 11:00前（4晚）'],
-      loc:'微笑酒店PREMIUM大阪本町 Minamisenba Osaka'
-    },
-    {
-      icon:'📶', title:'日本电话卡（已购买）× 2',
-      meta:['2026-10-14 香港机场自取 · 7天 4G 数据卡 · 每日高速 2GB（用完降速至 256kbps）','取件：香港国际机场一号客运大楼第5层接机大堂 A16 柜台，07:00–23:00','抵达日本后在目的地激活；按自然日计算，日本时间每日 00:00 刷新；仅数据，不支持通话/短信'],
-      loc:'香港国际机场 一号客运大楼 第五层 接机大堂 A16柜台'
-    },
-    {
-      icon:'🏨', title:'VIA INN 饭田桥后乐园',
-      meta:['入住 10/18 15:00后 · 退房 10/20 10:00前（2晚）'],
-      loc:'VIA INN IIDABASHI KORAKUEN Tokyo'
-    },
-    {
-      icon:'🎫', title:'东京地铁 48 小时券 × 2',
-      meta:['成人票，需兑换实体票', '建议 10/19 一早启用，覆盖至 10/21 凌晨']
-    },
-    {
-      icon:'🎫', title:'奈良一日券规划（待决定）',
-      meta:['推荐先比较：Osaka Metro版「奈良・斑鸠1day」¥2,200/人，含大阪Metro（梦洲除外）+大阪难波↔近铁奈良+奈良交通指定区间；适合酒店往返难波并在奈良坐公交。','若当天以步行为主：IC卡购买近铁往返（约¥1,360/人），需要 2 次以上公交再加奈良公园・西之京世界遗产 1-Day Pass ¥600；通常更灵活。','原“关西周游券3日非连续版”不适用于本次 10/17；官方 LITE 版本期有效期最晚至 2026/10/02。'],
-      url:'https://www.kintetsu.co.jp/senden/Railway/Ticket/ikaruga/', linkLabel:'官方票券说明 →'
-    }
-  ];
-  var confWrap = document.getElementById('confirmedList');
-  confirmed.forEach(function(c){
-    var div = document.createElement('div');
-    div.className = 'conf-item';
-    var metaHtml = c.meta.map(function(m){ return '<div>'+esc(m)+'</div>'; }).join('');
-    if(c.loc){ metaHtml += '<div><a class="loc" target="_blank" rel="noopener" href="'+mapsUrl(c.loc)+'">在地图中打开 →</a></div>'; }
-    if(c.url){ metaHtml += '<div><a class="loc" target="_blank" rel="noopener" href="'+esc(c.url)+'">'+esc(c.linkLabel || '官方信息 →')+'</a></div>'; }
-    div.innerHTML = '<div class="conf-icon">'+c.icon+'</div><div class="conf-body"><b>'+esc(c.title)+'</b><div class="meta">'+metaHtml+'</div></div>';
-    confWrap.appendChild(div);
-  });
-
-  /* ================= 逐日行程 ================= */
-  var days = [
-    {date:'10/14（三）', color:'#7089A6', summary:'香港机场办理提醒，领取电话卡，抵达关西机场，入住大阪', stops:[
-      {time:'13:30', name:'香港机场离境税退税提醒', note:'如符合香港飞机乘客离境税豁免条件，离港后 28 个日历日内通过官方平台在线申请；请保留登机牌/机票资料。普通香港→大阪直飞不会自动退税，最终以官方资格为准', url:'https://www.APDTRefund.hk/', linkLabel:'官方退税平台 →'},
-      {time:'14:00', name:'香港机场领取电话卡', note:'已购买 2 张；香港国际机场一号客运大楼第5层接机大堂 A16 柜台，07:00–23:00；领取后随身保管，抵达日本后再激活', loc:'香港国际机场 一号客运大楼 第五层 接机大堂 A16柜台'},
-      {time:'15:50', name:'香港机场出发', note:'UO862，香港时间'},
-      {time:'20:35', name:'抵达关西机场', note:'日本时间，出关后前往酒店', loc:'关西国际机场'},
-      {time:'21:30', name:'入住 微笑酒店PREMIUM大阪本町', loc:'微笑酒店PREMIUM大阪本町'}
-    ]},
-    {date:'10/15（四）', color:'#C08A4E', summary:'大阪购物日 + 取戒指', stops:[
-      {time:'09:30', name:'アイプリモ梅田 HERBIS ENT', note:'取戒指，不用预约', loc:'アイプリモ 梅田 HERBIS ENT 大阪'},
-      {time:'10:30', name:'阪急梅田本店', note:'三宅一生、川久保玲、CA4LA、Goyard、Elégance蜜粉饼', loc:'阪急うめだ本店'},
-      {time:'12:30', name:'午餐｜京都胜牛 LINKS UMEDA店', note:'牛カツ；大阪市北区大深町1-1 LINKS UMEDA 8F · 11:00–23:00', loc:'牛カツ京都勝牛 ヨドバシLINKS梅田店 大阪市北区大深町1-1 LINKS UMEDA 8F', image:'codex-clipboard-ba3448f4-57d8-42e8-918c-3dbdab72a223.png'},
-      {time:'13:30', name:'LUCUA / LUCUA 1100', note:'优衣库、MUJI、JINS/Zoff', loc:'LUCUA大阪'},
-      {time:'14:30', name:'Grand Front Osaka 南馆', note:'Longchamp、北面、Montbell', loc:'グランフロント大阪 南館'},
-      {time:'15:30', name:'御堂筋・心斋桥段', note:'LV；优惠券提醒：大丸/松坂屋券、餐饮代金券；LV包购买：先确认店内是否支持免消费税与游客优惠', loc:'心斎橋筋商店街'},
-      {time:'16:00', name:'大丸心斋桥 envie 柜台', note:'注册会员可试戴4副；试戴后购买 envie 美瞳', loc:'大丸心斎橋店'},
-      {time:'16:30', name:'心斋桥PARCO', note:'CA4LA、鬼冢虎', loc:'心斎橋パルコ'},
-      {time:'17:30', name:'心斋桥筋 + 松本清/唐吉诃德', note:'Canmake、指甲刀、Seika洗发水、电动睫毛夹；Pocky（三种）顺手留意；优惠券提醒：Bic Camera / KOJIMA券、EDION券、唐吉诃德券', loc:'心斎橋筋商店街 マツモトキヨシ'},
-      {time:'18:30', name:'无印良品 心斋桥大型店', note:'MUJI 值得买的好物', loc:'無印良品 心斎橋'},
-      {time:'19:30', name:'晚餐｜一兰心斋桥店', note:'大阪市中央区心斋桥筋1-3-29 ミヤプラザ心斋桥1F · 10:00–翌6:00', loc:'一蘭 心斎橋店 大阪市中央区心斋橋筋1-3-29', image:'codex-clipboard-d1acc0ce-96e4-4d05-b51a-73ff4de9a0d8.png'},
-      {time:'20:30', name:'美国村（アメ村）', note:'中古店集中区', loc:'アメリカ村 大阪'}
-    ]},
-    {date:'10/16（五）', color:'#BD4430', summary:'环球影城 USJ + 空庭温泉', stops:[
-      {time:'08:30', name:'环球影城 USJ', note:'万圣节活动期间，Express Pass建议提前官网订', loc:'Universal Studios Japan'},
-      {time:'20:00', name:'空庭温泉 OSAKA BAY TOWER', note:'贷切露天风吕；最晚预约：当天 19:00 前电话询问（仅限有空房，11:30–20:00 时段），但建议最迟提前 1–2 周预约；官方建议预约前约 1 小时到馆', loc:'空庭温泉 OSAKA BAY TOWER 弁天町', url:'https://solaniwa.com/explore/private_bath/', linkLabel:'官方温泉预约页 →'}
-    ]},
-    {date:'10/17（六）', color:'#5C7A52', summary:'奈良一日游', stops:[
-      {time:'08:30', name:'酒店→大阪难波站', note:'票券建议：不必购买关西铁路通票；若要乘大阪Metro到难波且奈良坐 2 次以上公交，买「奈良・斑鸠1day（Osaka Metro版）」¥2,200/人；否则 IC 卡 + 近铁普通往返更省', loc:'大阪難波駅', url:'https://www.kintetsu.co.jp/senden/Railway/Ticket/ikaruga/', linkLabel:'官方票券说明 →'},
-      {time:'09:00', name:'近铁大阪难波→近铁奈良', note:'快速急行约 40 分钟；普通运费往返约 ¥1,360，特急需另付特急券', loc:'近鉄奈良駅'},
-      {time:'10:00', name:'东大寺', note:'从近铁奈良站步行约 20 分，建议步行串联', loc:'東大寺 奈良'},
-      {time:'11:30', name:'奈良公园', note:'看鹿；与东大寺区域步行衔接', loc:'奈良公園'},
-      {time:'13:00', name:'春日大社', note:'建议步行；体力不足时再使用奈良交通巴士', loc:'春日大社'},
-      {time:'14:30', name:'奈良町・近铁奈良站', note:'休息、买伴手礼，准备返程', loc:'ならまち 奈良'},
-      {time:'15:15', name:'返回大阪', note:'近铁快速急行返回大阪难波', loc:'近鉄奈良駅'},
-      {time:'15:30', name:'迟午餐｜Spice Kingdom 难波CITY店', note:'北印度咖喱、比尔亚尼、烤饼；大阪市中央区难波5-1-60 なんばCITY本馆1F · 11:00–22:00', loc:'Spice Kingdom なんばCITY店 大阪市中央区難波5-1-60', image:'codex-clipboard-cebcb164-a48d-477e-8514-5dfbce46cc8e.png'},
-      {time:'17:30', name:'晚餐选项 A｜烧鸟店 Enya 难波店', note:'与 Yumemaru 二选一；大阪市中央区难波4-6-4 · 17:00–翌0:30', loc:'炭火焼とり えんや 難波店 大阪市中央区難波4-6-4', image:'codex-clipboard-bcd4d4dc-7a95-40fe-86da-ead61d91bccd.png'},
-      {time:'17:30', name:'晚餐选项 B｜YUMEMARU（ユメマル）', note:'与 Enya 二选一；寿喜烧/涮涮锅；大阪市中央区日本桥1-1-14 2F · 17:00–21:00，建议预约', loc:'YUMEMARU 大阪市中央区日本橋1-1-14 2F', image:'codex-clipboard-a5bcc31b-5348-46c2-9ad7-6d1cbd21907a.png'}
-    ]},
-    {date:'10/18（日）', color:'#8A5A7A', summary:'京都中转，转往东京', stops:[
-      {time:'11:00', name:'大阪本町酒店退房', note:'带上全部行李'},
-      {time:'11:30', name:'JR新快速 大阪→京都', note:'约29分钟'},
-      {time:'12:00', name:'京都站寄存行李', note:'大件寄物柜或手ぶら観光柜台', loc:'京都駅'},
-      {time:'12:15', name:'伏见稻荷大社', note:'千本鸟居，JR奈良线2站（不在关西周游券范围内，单独购票）', loc:'伏見稲荷大社'},
-      {time:'14:00', name:'四条・新京极', note:'SOU・SOU购物 + 河原町逛街', loc:'新京極通 京都'},
-      {time:'16:00', name:'京都站取行李 + 晚餐', loc:'京都駅'},
-      {time:'17:36', name:'新干线 Nozomi 462｜京都→东京', note:'17:36 京都发、19:51 东京到；普通车指定席建议选 D＋E 连座；SmartEX 正常指定席开售：9/18 日本时间 10:00', url:'https://smart-ex.jp/', linkLabel:'SmartEX 官方预约 →'},
-      {time:'20:30', name:'入住东京酒店｜VIA INN 饭田桥后乐园', note:'乘 Nozomi 462 于 19:51 抵达东京；预计 20:25–20:45 到店；已确认入住 10/18 15:00 后、退房 10/20 10:00 前；到店后办理入住', loc:'VIA INN IIDABASHI KORAKUEN Tokyo'}
-    ]},
-    {date:'10/19（一）', color:'#24405F', summary:'浅草 → 日本桥 → 银座', stops:[
-      {time:'08:30', name:'兑换东京地铁48小时券', note:'在地铁站窗口兑换实体票', exchange:true},
-      {time:'09:00', name:'浅草寺・仲见世通り', loc:'浅草寺'},
-      {time:'12:00', name:'移动至东京站/丸之内', note:'地铁约20分钟'},
-      {time:'13:00', name:'日本桥三越本店・高岛屋', note:'老铺百货，奇货店多', loc:'日本橋三越本店'},
-      {time:'15:30', name:'银座', note:'GINZA SIX(lululemon)、优衣库旗舰店、鬼冢虎、Longchamp、拉夫劳伦、JINS/Zoff', loc:'銀座 GINZA SIX'},
-      {time:'19:00', name:'银座晚餐', loc:'銀座'}
-    ]},
-    {date:'10/20（二）', color:'#A6763E', summary:'中目黑・涉谷，深夜赴羽田', stops:[
-      {time:'09:00', name:'皇居东御苑 / 丸之内散步', loc:'皇居東御苑'},
-      {time:'10:00', name:'饭田桥酒店退房', note:'行李寄存前台或车站寄物柜'},
-      {time:'11:00', name:'中目黑', note:'布袋 Ball&Chain，目黑川散步', loc:'中目黒'},
-      {time:'14:00', name:'涉谷 / 原宿裏参道', note:'中古店集中区', loc:'裏原宿'},
-      {time:'17:30', name:'取回行李 + 晚餐'},
-      {time:'23:00前', name:'前往羽田机场', note:'务必提前确认末班电车/单轨时刻', loc:'羽田空港'}
-    ]},
-    {date:'10/21（三）', color:'#6B6252', summary:'凌晨飞回香港', stops:[
-      {time:'02:20', name:'羽田机场起飞', note:'UO629'},
-      {time:'06:00', name:'抵达香港', note:'旅程结束'}
-    ]}
-  ];
-
-  var dayWrap = document.getElementById('dayList');
-  days.forEach(function(day, idx){
-    var card = document.createElement('div');
-    card.className = 'day';
-    card.style.setProperty('--day-color', day.color);
-
-    var stopsHtml = day.stops.map(function(s){
-      var nameHtml = s.loc ? '<a class="loc" target="_blank" rel="noopener" href="'+mapsUrl(s.loc)+'">'+esc(s.name)+'</a>' : esc(s.name);
-      var badge = s.exchange ? '<span class="badge">换票</span>' : '';
-      var note = s.note ? '<span class="note">'+esc(s.note)+'</span>' : '';
-      var linkHtml = s.url ? '<a class="loc" target="_blank" rel="noopener" href="'+esc(s.url)+'">'+esc(s.linkLabel || '官方预约/票券信息 →')+'</a>' : '';
-      var photo = s.image ? '<img class="stop-image" src="'+esc(s.image)+'" alt="'+esc(s.name)+'" loading="lazy">' : '';
-      return '<div class="stop"><div class="time">'+esc(s.time)+'</div><div class="content">'+nameHtml+badge+note+linkHtml+photo+'</div></div>';
-    }).join('');
-
-    var mapId = 'daymap-'+idx;
-    card.innerHTML =
-      '<div class="day-head" data-target="'+mapId+'">'+
-        '<div class="dd"><div class="date">'+esc(day.date)+'</div><div class="summary">'+esc(day.summary)+'</div></div>'+
-        '<div class="toggle">路线 ▾</div>'+
-      '</div>'+
-      '<div class="day-stops">'+stopsHtml+'</div>'+
-      '<div class="day-map" id="'+mapId+'"></div>';
-
-    dayWrap.appendChild(card);
-
-    // 路线展开/收起 + 生成当日示意图与导航按钮
-    var head = card.querySelector('.day-head');
-    var mapBox = card.querySelector('#'+mapId);
-    var built = false;
-    head.addEventListener('click', function(){
-      var open = mapBox.classList.toggle('open');
-      head.querySelector('.toggle').textContent = open ? '路线 ▴' : '路线 ▾';
-      if(open && !built){
-        built = true;
-        var locStops = day.stops.filter(function(s){ return s.loc; });
-        var n = locStops.length;
-        var w = 320, h = Math.max(70, n*40+20);
-        var svgParts = [];
-        var pts = [];
-        for(var i=0;i<n;i++){
-          var x = 30 + (i%2===0 ? 0 : 40);
-          var y = 26 + i*38;
-          pts.push([x,y]);
-        }
-        var path = 'M' + pts.map(function(p){return p[0]+','+p[1];}).join(' L');
-        svgParts.push('<path d="'+path+'" fill="none" stroke="'+day.color+'" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="1 7"/>');
-        pts.forEach(function(p,i){
-          svgParts.push('<circle cx="'+p[0]+'" cy="'+p[1]+'" r="5" fill="'+day.color+'"/>');
-          svgParts.push('<text x="'+(p[0]+12)+'" y="'+(p[1]+4)+'" font-size="11" fill="var(--ink)">'+esc(locStops[i].name)+'</text>');
-        });
-        var svg = '<svg viewBox="0 0 '+(w)+' '+h+'" xmlns="http://www.w3.org/2000/svg">'+svgParts.join('')+'</svg>';
-        var navHtml = n > 1 ? '<a class="nav-btn" target="_blank" rel="noopener" href="'+mapsDirUrl(locStops.map(function(s){return s.loc;}))+'">一键打开全天导航 →</a>' : '';
-        mapBox.innerHTML = svg + navHtml;
+    function esc(s){ return String(s).replace(/[&<>"]/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  
+    /* ================= 倒计时事件（均为带时区的 ISO 时间，跨时区打开结果一致） ================= */
+    var events = [
+      {iso:"2026-10-14T15:50:00+08:00", title:"从香港机场出发", sub:"UO862 飞往大阪关西机场", tz:"香港时间"},
+      {iso:"2026-10-14T20:35:00+09:00", title:"抵达关西机场", sub:"落地大阪，前往本町酒店", tz:"日本时间"},
+      {iso:"2026-10-15T09:30:00+09:00", title:"大阪购物日开始", sub:"アイプリモ梅田 HERBIS ENT 取戒指", tz:"日本时间"},
+      {iso:"2026-10-16T08:30:00+09:00", title:"环球影城开园", sub:"USJ 全天，傍晚去空庭温泉", tz:"日本时间"},
+      {iso:"2026-10-17T08:30:00+09:00", title:"奈良一日游出发", sub:"近铁难波站启用奈良一日券或IC卡", tz:"日本时间"},
+      {iso:"2026-10-18T11:00:00+09:00", title:"大阪酒店退房", sub:"带行李前往京都中转", tz:"日本时间"},
+      {iso:"2026-10-18T17:36:00+09:00", title:"新干线 Nozomi 462 出发", sub:"17:36 京都→19:51 东京，普通车指定席 D＋E", tz:"日本时间"},
+      {iso:"2026-10-19T09:00:00+09:00", title:"浅草寺", sub:"仲见世通り，之后前往日本桥・银座", tz:"日本时间"},
+      {iso:"2026-10-20T10:00:00+09:00", title:"东京酒店退房", sub:"行李寄存后继续中目黑・涉谷", tz:"日本时间"},
+      {iso:"2026-10-20T23:00:00+09:00", title:"前往羽田机场", sub:"注意末班电车时刻", tz:"日本时间"},
+      {iso:"2026-10-21T02:20:00+09:00", title:"从羽田机场起飞", sub:"UO629 飞回香港", tz:"日本时间"},
+      {iso:"2026-10-21T06:00:00+08:00", title:"抵达香港", sub:"旅程结束", tz:"香港时间"}
+    ];
+  
+    function findNext(){
+      var now = new Date();
+      for(var i=0;i<events.length;i++){
+        if(new Date(events[i].iso) > now) return events[i];
       }
-    });
-  });
-
-  /* ================= 待办清单（共享，经 Worker + KV 存储） ================= */
-  var todoListEl = document.getElementById('todoList');
-
-  function renderTodos(todos){
-    todoListEl.innerHTML = '';
-    if(!todos || todos.length === 0){
-      todoListEl.innerHTML = '<li class="todo-empty">全部完成 🎉</li>';
-      return;
+      return null;
     }
-    todos.forEach(function(t){
-      var li = document.createElement('li');
-      var span = document.createElement('span');
-      span.textContent = t.text;
-      var btn = document.createElement('button');
-      btn.className = 'todo-done-btn';
-      btn.textContent = '完成';
-      btn.addEventListener('click', function(){ completeTodo(t.id); });
-      li.appendChild(span);
-      li.appendChild(btn);
-      todoListEl.appendChild(li);
+  
+    function pad(n){ return String(n).padStart(2,'0'); }
+  
+    function tickCountdown(){
+      var next = findNext();
+      var titleEl = document.getElementById('focusTitle');
+      var subEl = document.getElementById('focusSub');
+      var timeEl = document.getElementById('focusTargetTime');
+      if(!next){
+        titleEl.textContent = '旅程已结束';
+        subEl.textContent = '欢迎回家 🏠';
+        ['cdDays','cdHours','cdMins','cdSecs'].forEach(function(id){document.getElementById(id).textContent='--';});
+        timeEl.textContent = '';
+        return;
+      }
+      titleEl.textContent = next.title;
+      subEl.textContent = next.sub;
+      var d = new Date(next.iso);
+      var diff = Math.max(0, d - new Date());
+      var days = Math.floor(diff / 86400000);
+      var hours = Math.floor(diff % 86400000 / 3600000);
+      var mins = Math.floor(diff % 3600000 / 60000);
+      var secs = Math.floor(diff % 60000 / 1000);
+      document.getElementById('cdDays').textContent = days;
+      document.getElementById('cdHours').textContent = pad(hours);
+      document.getElementById('cdMins').textContent = pad(mins);
+      document.getElementById('cdSecs').textContent = pad(secs);
+      var localStr = d.toLocaleString('zh-CN', {month:'numeric', day:'numeric', hour:'2-digit', minute:'2-digit'});
+      timeEl.textContent = '目标：' + next.iso.slice(0,16).replace('T',' ') + '（' + next.tz + '）· 你所在时区约 ' + localStr;
+    }
+    tickCountdown();
+    setInterval(tickCountdown, 1000);
+  
+    /* ================= 已确认清单 ================= */
+    var confirmed = [
+      {
+        icon:'✈️', title:'UO862 香港快运 · 香港 → 大阪关西',
+        meta:['2026-10-14（周三）15:50 HKG → 20:35 KIX（日本时间）', '香港国际机场 客运大楼2 → 关西国际机场 航站楼1']
+      },
+      {
+        icon:'✈️', title:'UO629 香港快运 · 东京羽田 → 香港',
+        meta:['2026-10-21（周三）02:20 HND → 06:00 HKG（香港时间）', '羽田机场 航站楼3 → 香港国际机场 航站楼1']
+      },
+      {
+        icon:'🏨', title:'微笑酒店 PREMIUM 大阪本町',
+        meta:['入住 10/14 14:00后 · 退房 10/18 11:00前（4晚）'],
+        loc:'微笑酒店PREMIUM大阪本町 Minamisenba Osaka'
+      },
+      {
+        icon:'📶', title:'日本电话卡（已购买）× 2',
+        meta:['2026-10-14 香港机场自取 · 7天 4G 数据卡 · 每日高速 2GB（用完降速至 256kbps）','取件：香港国际机场一号客运大楼第5层接机大堂 A16 柜台，07:00–23:00','抵达日本后在目的地激活；按自然日计算，日本时间每日 00:00 刷新；仅数据，不支持通话/短信'],
+        loc:'香港国际机场 一号客运大楼 第五层 接机大堂 A16柜台'
+      },
+      {
+        icon:'🏨', title:'VIA INN 饭田桥后乐园',
+        meta:['入住 10/18 15:00后 · 退房 10/20 10:00前（2晚）'],
+        loc:'VIA INN IIDABASHI KORAKUEN Tokyo'
+      },
+      {
+        icon:'🎫', title:'东京地铁 48 小时券 × 2',
+        meta:['成人票，需兑换实体票', '建议 10/19 一早启用，覆盖至 10/21 凌晨']
+      },
+      {
+        icon:'🎫', title:'奈良一日券规划（待决定）',
+        meta:['推荐先比较：Osaka Metro版「奈良・斑鸠1day」¥2,200/人，含大阪Metro（梦洲除外）+大阪难波↔近铁奈良+奈良交通指定区间；适合酒店往返难波并在奈良坐公交。','若当天以步行为主：IC卡购买近铁往返（约¥1,360/人），需要 2 次以上公交再加奈良公园・西之京世界遗产 1-Day Pass ¥600；通常更灵活。','原“关西周游券3日非连续版”不适用于本次 10/17；官方 LITE 版本期有效期最晚至 2026/10/02。'],
+        url:'https://www.kintetsu.co.jp/senden/Railway/Ticket/ikaruga/', linkLabel:'官方票券说明 →'
+      }
+    ];
+    var confWrap = document.getElementById('confirmedList');
+    confirmed.forEach(function(c){
+      var div = document.createElement('div');
+      div.className = 'conf-item';
+      var metaHtml = c.meta.map(function(m){ return '<div>'+esc(m)+'</div>'; }).join('');
+      if(c.loc){ metaHtml += '<div><a class="loc" target="_blank" rel="noopener" href="'+mapsUrl(c.loc)+'">在地图中打开 →</a></div>'; }
+      if(c.url){ metaHtml += '<div><a class="loc" target="_blank" rel="noopener" href="'+esc(c.url)+'">'+esc(c.linkLabel || '官方信息 →')+'</a></div>'; }
+      div.innerHTML = '<div class="conf-icon">'+c.icon+'</div><div class="conf-body"><b>'+esc(c.title)+'</b><div class="meta">'+metaHtml+'</div></div>';
+      confWrap.appendChild(div);
     });
-  }
-
-  function loadTodos(){
-    fetch('/api/todos').then(function(r){
-      if(!r.ok) throw new Error('bad response');
-      return r.json();
-    }).then(renderTodos).catch(function(){
-      todoListEl.innerHTML = '<li class="todo-offline">离线或未连接后端，暂时无法同步待办清单</li>';
+  
+    /* ================= 逐日行程 ================= */
+    var days = [
+      {date:'10/14（三）', color:'#7089A6', summary:'香港机场办理提醒，领取电话卡，抵达关西机场，入住大阪', stops:[
+        {time:'13:30', name:'香港机场离境税退税提醒', note:'如符合香港飞机乘客离境税豁免条件，离港后 28 个日历日内通过官方平台在线申请；请保留登机牌/机票资料。普通香港→大阪直飞不会自动退税，最终以官方资格为准', url:'https://www.APDTRefund.hk/', linkLabel:'官方退税平台 →'},
+        {time:'14:00', name:'香港机场领取电话卡', note:'已购买 2 张；香港国际机场一号客运大楼第5层接机大堂 A16 柜台，07:00–23:00；领取后随身保管，抵达日本后再激活', loc:'香港国际机场 一号客运大楼 第五层 接机大堂 A16柜台'},
+        {time:'15:50', name:'香港机场出发', note:'UO862，香港时间'},
+        {time:'20:35', name:'抵达关西机场', note:'日本时间，出关后前往酒店', loc:'关西国际机场'},
+        {time:'21:30', name:'入住 微笑酒店PREMIUM大阪本町', loc:'微笑酒店PREMIUM大阪本町'}
+      ]},
+      {date:'10/15（四）', color:'#C08A4E', summary:'大阪购物日 + 取戒指', stops:[
+        {time:'09:30', name:'アイプリモ梅田 HERBIS ENT', note:'取戒指，不用预约', loc:'アイプリモ 梅田 HERBIS ENT 大阪'},
+        {time:'10:30', name:'阪急梅田本店', note:'三宅一生、川久保玲、CA4LA、Goyard、Elégance蜜粉饼', loc:'阪急うめだ本店'},
+        {time:'12:30', name:'午餐｜京都胜牛 LINKS UMEDA店', note:'牛カツ；大阪市北区大深町1-1 LINKS UMEDA 8F · 11:00–23:00', loc:'牛カツ京都勝牛 ヨドバシLINKS梅田店 大阪市北区大深町1-1 LINKS UMEDA 8F', image:'codex-clipboard-ba3448f4-57d8-42e8-918c-3dbdab72a223.png'},
+        {time:'13:30', name:'LUCUA / LUCUA 1100', note:'优衣库、MUJI、JINS/Zoff', loc:'LUCUA大阪'},
+        {time:'14:30', name:'Grand Front Osaka 南馆', note:'Longchamp、北面、Montbell', loc:'グランフロント大阪 南館'},
+        {time:'15:30', name:'御堂筋・心斋桥段', note:'LV；优惠券提醒：大丸/松坂屋券、餐饮代金券；LV包购买：先确认店内是否支持免消费税与游客优惠', loc:'心斎橋筋商店街'},
+        {time:'16:00', name:'大丸心斋桥 envie 柜台', note:'注册会员可试戴4副；试戴后购买 envie 美瞳', loc:'大丸心斎橋店'},
+        {time:'16:30', name:'心斋桥PARCO', note:'CA4LA、鬼冢虎', loc:'心斎橋パルコ'},
+        {time:'17:30', name:'心斋桥筋 + 松本清/唐吉诃德', note:'Canmake、指甲刀、Seika洗发水、电动睫毛夹；Pocky（三种）顺手留意；优惠券提醒：Bic Camera / KOJIMA券、EDION券、唐吉诃德券', loc:'心斎橋筋商店街 マツモトキヨシ'},
+        {time:'18:30', name:'无印良品 心斋桥大型店', note:'MUJI 值得买的好物', loc:'無印良品 心斎橋'},
+        {time:'19:30', name:'晚餐｜一兰心斋桥店', note:'大阪市中央区心斋桥筋1-3-29 ミヤプラザ心斋桥1F · 10:00–翌6:00', loc:'一蘭 心斎橋店 大阪市中央区心斋橋筋1-3-29', image:'codex-clipboard-d1acc0ce-96e4-4d05-b51a-73ff4de9a0d8.png'},
+        {time:'20:30', name:'美国村（アメ村）', note:'中古店集中区', loc:'アメリカ村 大阪'}
+      ]},
+      {date:'10/16（五）', color:'#BD4430', summary:'环球影城 USJ + 空庭温泉', stops:[
+        {time:'08:30', name:'环球影城 USJ', note:'万圣节活动期间，Express Pass建议提前官网订', loc:'Universal Studios Japan'},
+        {time:'20:00', name:'空庭温泉 OSAKA BAY TOWER', note:'贷切露天风吕；最晚预约：当天 19:00 前电话询问（仅限有空房，11:30–20:00 时段），但建议最迟提前 1–2 周预约；官方建议预约前约 1 小时到馆', loc:'空庭温泉 OSAKA BAY TOWER 弁天町', url:'https://solaniwa.com/explore/private_bath/', linkLabel:'官方温泉预约页 →'}
+      ]},
+      {date:'10/17（六）', color:'#5C7A52', summary:'奈良一日游', stops:[
+        {time:'08:30', name:'酒店→大阪难波站', note:'票券建议：不必购买关西铁路通票；若要乘大阪Metro到难波且奈良坐 2 次以上公交，买「奈良・斑鸠1day（Osaka Metro版）」¥2,200/人；否则 IC 卡 + 近铁普通往返更省', loc:'大阪難波駅', url:'https://www.kintetsu.co.jp/senden/Railway/Ticket/ikaruga/', linkLabel:'官方票券说明 →'},
+        {time:'09:00', name:'近铁大阪难波→近铁奈良', note:'快速急行约 40 分钟；普通运费往返约 ¥1,360，特急需另付特急券', loc:'近鉄奈良駅'},
+        {time:'10:00', name:'东大寺', note:'从近铁奈良站步行约 20 分，建议步行串联', loc:'東大寺 奈良'},
+        {time:'11:30', name:'奈良公园', note:'看鹿；与东大寺区域步行衔接', loc:'奈良公園'},
+        {time:'13:00', name:'春日大社', note:'建议步行；体力不足时再使用奈良交通巴士', loc:'春日大社'},
+        {time:'14:30', name:'奈良町・近铁奈良站', note:'休息、买伴手礼，准备返程', loc:'ならまち 奈良'},
+        {time:'15:15', name:'返回大阪', note:'近铁快速急行返回大阪难波', loc:'近鉄奈良駅'},
+        {time:'15:30', name:'迟午餐｜Spice Kingdom 难波CITY店', note:'北印度咖喱、比尔亚尼、烤饼；大阪市中央区难波5-1-60 なんばCITY本馆1F · 11:00–22:00', loc:'Spice Kingdom なんばCITY店 大阪市中央区難波5-1-60', image:'codex-clipboard-cebcb164-a48d-477e-8514-5dfbce46cc8e.png'},
+        {time:'17:30', name:'晚餐选项 A｜烧鸟店 Enya 难波店', note:'与 Yumemaru 二选一；大阪市中央区难波4-6-4 · 17:00–翌0:30', loc:'炭火焼とり えんや 難波店 大阪市中央区難波4-6-4', image:'codex-clipboard-bcd4d4dc-7a95-40fe-86da-ead61d91bccd.png'},
+        {time:'17:30', name:'晚餐选项 B｜YUMEMARU（ユメマル）', note:'与 Enya 二选一；寿喜烧/涮涮锅；大阪市中央区日本桥1-1-14 2F · 17:00–21:00，建议预约', loc:'YUMEMARU 大阪市中央区日本橋1-1-14 2F', image:'codex-clipboard-a5bcc31b-5348-46c2-9ad7-6d1cbd21907a.png'}
+      ]},
+      {date:'10/18（日）', color:'#8A5A7A', summary:'京都中转，转往东京', stops:[
+        {time:'11:00', name:'大阪本町酒店退房', note:'带上全部行李'},
+        {time:'11:30', name:'JR新快速 大阪→京都', note:'约29分钟'},
+        {time:'12:00', name:'京都站寄存行李', note:'大件寄物柜或手ぶら観光柜台', loc:'京都駅'},
+        {time:'12:15', name:'伏见稻荷大社', note:'千本鸟居，JR奈良线2站（不在关西周游券范围内，单独购票）', loc:'伏見稲荷大社'},
+        {time:'14:00', name:'四条・新京极', note:'SOU・SOU购物 + 河原町逛街', loc:'新京極通 京都'},
+        {time:'16:00', name:'京都站取行李 + 晚餐', loc:'京都駅'},
+        {time:'17:36', name:'新干线 Nozomi 462｜京都→东京', note:'17:36 京都发、19:51 东京到；普通车指定席建议选 D＋E 连座；SmartEX 正常指定席开售：9/18 日本时间 10:00', url:'https://smart-ex.jp/', linkLabel:'SmartEX 官方预约 →'},
+        {time:'20:30', name:'入住东京酒店｜VIA INN 饭田桥后乐园', note:'乘 Nozomi 462 于 19:51 抵达东京；预计 20:25–20:45 到店；已确认入住 10/18 15:00 后、退房 10/20 10:00 前；到店后办理入住', loc:'VIA INN IIDABASHI KORAKUEN Tokyo'}
+      ]},
+      {date:'10/19（一）', color:'#24405F', summary:'浅草 → 日本桥 → 银座', stops:[
+        {time:'08:30', name:'兑换东京地铁48小时券', note:'在地铁站窗口兑换实体票', exchange:true},
+        {time:'09:00', name:'浅草寺・仲见世通り', loc:'浅草寺'},
+        {time:'12:00', name:'移动至东京站/丸之内', note:'地铁约20分钟'},
+        {time:'13:00', name:'日本桥三越本店・高岛屋', note:'老铺百货，奇货店多', loc:'日本橋三越本店'},
+        {time:'15:30', name:'银座', note:'GINZA SIX(lululemon)、优衣库旗舰店、鬼冢虎、Longchamp、拉夫劳伦、JINS/Zoff', loc:'銀座 GINZA SIX'},
+        {time:'19:00', name:'银座晚餐', loc:'銀座'}
+      ]},
+      {date:'10/20（二）', color:'#A6763E', summary:'中目黑・涉谷，深夜赴羽田', stops:[
+        {time:'09:00', name:'皇居东御苑 / 丸之内散步', loc:'皇居東御苑'},
+        {time:'10:00', name:'饭田桥酒店退房', note:'行李寄存前台或车站寄物柜'},
+        {time:'11:00', name:'中目黑', note:'布袋 Ball&Chain，目黑川散步', loc:'中目黒'},
+        {time:'14:00', name:'涉谷 / 原宿裏参道', note:'中古店集中区', loc:'裏原宿'},
+        {time:'17:30', name:'取回行李 + 晚餐'},
+        {time:'23:00前', name:'前往羽田机场', note:'务必提前确认末班电车/单轨时刻', loc:'羽田空港'}
+      ]},
+      {date:'10/21（三）', color:'#6B6252', summary:'凌晨飞回香港', stops:[
+        {time:'02:20', name:'羽田机场起飞', note:'UO629'},
+        {time:'06:00', name:'抵达香港', note:'旅程结束'}
+      ]}
+    ];
+  
+    var dayWrap = document.getElementById('dayList');
+    days.forEach(function(day, idx){
+      var card = document.createElement('div');
+      card.className = 'day';
+      card.style.setProperty('--day-color', day.color);
+  
+      var stopsHtml = day.stops.map(function(s){
+        var nameHtml = s.loc ? '<a class="loc" target="_blank" rel="noopener" href="'+mapsUrl(s.loc)+'">'+esc(s.name)+'</a>' : esc(s.name);
+        var badge = s.exchange ? '<span class="badge">换票</span>' : '';
+        var note = s.note ? '<span class="note">'+esc(s.note)+'</span>' : '';
+        var linkHtml = s.url ? '<a class="loc" target="_blank" rel="noopener" href="'+esc(s.url)+'">'+esc(s.linkLabel || '官方预约/票券信息 →')+'</a>' : '';
+        var photo = s.image ? '<img class="stop-image" src="'+esc(s.image)+'" alt="'+esc(s.name)+'" loading="lazy">' : '';
+        return '<div class="stop"><div class="time">'+esc(s.time)+'</div><div class="content">'+nameHtml+badge+note+linkHtml+photo+'</div></div>';
+      }).join('');
+  
+      var mapId = 'daymap-'+idx;
+      card.innerHTML =
+        '<div class="day-head" data-target="'+mapId+'">'+
+          '<div class="dd"><div class="date">'+esc(day.date)+'</div><div class="summary">'+esc(day.summary)+'</div></div>'+
+          '<div class="toggle">路线 ▾</div>'+
+        '</div>'+
+        '<div class="day-stops">'+stopsHtml+'</div>'+
+        '<div class="day-map" id="'+mapId+'"></div>';
+  
+      dayWrap.appendChild(card);
+  
+      // 路线展开/收起 + 生成当日示意图与导航按钮
+      var head = card.querySelector('.day-head');
+      var mapBox = card.querySelector('#'+mapId);
+      var built = false;
+      head.addEventListener('click', function(){
+        var open = mapBox.classList.toggle('open');
+        head.querySelector('.toggle').textContent = open ? '路线 ▴' : '路线 ▾';
+        if(open && !built){
+          built = true;
+          var locStops = day.stops.filter(function(s){ return s.loc; });
+          var n = locStops.length;
+          var w = 320, h = Math.max(70, n*40+20);
+          var svgParts = [];
+          var pts = [];
+          for(var i=0;i<n;i++){
+            var x = 30 + (i%2===0 ? 0 : 40);
+            var y = 26 + i*38;
+            pts.push([x,y]);
+          }
+          var path = 'M' + pts.map(function(p){return p[0]+','+p[1];}).join(' L');
+          svgParts.push('<path d="'+path+'" fill="none" stroke="'+day.color+'" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="1 7"/>');
+          pts.forEach(function(p,i){
+            svgParts.push('<circle cx="'+p[0]+'" cy="'+p[1]+'" r="5" fill="'+day.color+'"/>');
+            svgParts.push('<text x="'+(p[0]+12)+'" y="'+(p[1]+4)+'" font-size="11" fill="var(--ink)">'+esc(locStops[i].name)+'</text>');
+          });
+          var svg = '<svg viewBox="0 0 '+(w)+' '+h+'" xmlns="http://www.w3.org/2000/svg">'+svgParts.join('')+'</svg>';
+          var navHtml = n > 1 ? '<a class="nav-btn" target="_blank" rel="noopener" href="'+mapsDirUrl(locStops.map(function(s){return s.loc;}))+'">一键打开全天导航 →</a>' : '';
+          mapBox.innerHTML = svg + navHtml;
+        }
+      });
     });
-  }
-
-  function completeTodo(id){
-    fetch('/api/todos/' + encodeURIComponent(id), {method:'DELETE'}).then(function(r){
-      if(!r.ok) throw new Error('bad response');
-      return r.json();
-    }).then(renderTodos).catch(function(){});
-  }
-
-  loadTodos();
-
-})();
-</script>
-</body>
-</html>
+  
+    /* ================= 待办清单（共享，经 Worker + KV 存储） ================= */
+    var todoListEl = document.getElementById('todoList');
+  
+    function renderTodos(todos){
+      todoListEl.innerHTML = '';
+      if(!todos || todos.length === 0){
+        todoListEl.innerHTML = '<li class="todo-empty">全部完成 🎉</li>';
+        return;
+      }
+      todos.forEach(function(t){
+        var li = document.createElement('li');
+        var span = document.createElement('span');
+        span.textContent = t.text;
+        var btn = document.createElement('button');
+        btn.className = 'todo-done-btn';
+        btn.textContent = '完成';
+        btn.addEventListener('click', function(){ completeTodo(t.id); });
+        li.appendChild(span);
+        li.appendChild(btn);
+        todoListEl.appendChild(li);
+      });
+    }
+  
+    function loadTodos(){
+      fetch('/api/todos').then(function(r){
+        if(!r.ok) throw new Error('bad response');
+        return r.json();
+      }).then(renderTodos).catch(function(){
+        todoListEl.innerHTML = '<li class="todo-offline">离线或未连接后端，暂时无法同步待办清单</li>';
+      });
+    }
+  
+    function completeTodo(id){
+      fetch('/api/todos/' + encodeURIComponent(id), {method:'DELETE'}).then(function(r){
+        if(!r.ok) throw new Error('bad response');
+        return r.json();
+      }).then(renderTodos).catch(function(){});
+    }
+  
+    loadTodos();
+  
+  })();
+  </script>
+  </body>
+  </html>
